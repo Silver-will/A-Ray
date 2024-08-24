@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="External">
+      <UniqueIdentifier>{3ef7ee95-6478-448a-9b03-f4571306ee3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External\Imgui">
+      <UniqueIdentifier>{dde2ba37-9a4e-4478-8455-7bfff6ccad2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{05f54509-abba-45a9-a9b4-7a8084ad3d08}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\camera.cpp">
@@ -43,6 +52,30 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\vk_pipelines.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="external\imgui\imgui.cpp">
+      <Filter>External\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="external\imgui\imgui_demo.cpp">
+      <Filter>External\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="external\imgui\imgui_draw.cpp">
+      <Filter>External\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="external\imgui\imgui_impl_glfw.cpp">
+      <Filter>External\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="external\imgui\imgui_impl_vulkan.cpp">
+      <Filter>External\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="external\imgui\imgui_tables.cpp">
+      <Filter>External\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="external\imgui\imgui_widgets.cpp">
+      <Filter>External\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="shapes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -77,5 +110,43 @@
     <ClInclude Include="src\vk_types.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="external\imgui\imconfig.h">
+      <Filter>External\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="external\imgui\imgui.h">
+      <Filter>External\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="external\imgui\imgui_impl_glfw.h">
+      <Filter>External\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="external\imgui\imgui_impl_vulkan.h">
+      <Filter>External\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="external\imgui\imgui_internal.h">
+      <Filter>External\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="external\imgui\imstb_rectpack.h">
+      <Filter>External\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="external\imgui\imstb_textedit.h">
+      <Filter>External\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="external\imgui\imstb_truetype.h">
+      <Filter>External\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="shapes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\ray_tracing.comp">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shaders\gradient.comp">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shaders\sky.comp">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

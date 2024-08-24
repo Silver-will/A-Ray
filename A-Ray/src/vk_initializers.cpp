@@ -285,7 +285,32 @@ VkImageCreateInfo vkinit::image_create_info(VkFormat format, VkImageUsageFlags u
     return info;
 }
 
-VkImageViewCreateInfo vkinit::imageview_create_info(VkFormat format, VkImage image, VkImageAspectFlags aspectFlags)
+VkImageCreateInfo vkinit::image_cubemap_create_info(VkFormat format, VkImageUsageFlags usageFlags, VkExtent3D extent,uint32_t mipCount)
+{
+    VkImageCreateInfo info = {};
+    info.sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO;
+    info.pNext = nullptr;
+
+    info.imageType = VK_IMAGE_TYPE_2D;
+    
+    info.format = format;
+    info.extent = extent;
+
+    info.mipLevels = mipCount;
+    info.arrayLayers = 6;
+    info.samples = VK_SAMPLE_COUNT_1_BIT;
+
+    info.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
+    info.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+   
+    info.tiling = VK_IMAGE_TILING_OPTIMAL;
+    info.usage = usageFlags;
+
+    info.flags = VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT;
+    return info;
+}
+
+VkImageViewCreateInfo vkinit::imageview_create_info(VkFormat format, VkImage image, VkImageAspectFlags aspectFlags, VkImageViewType viewType)
 {
     // build a image-view for the depth image to use for rendering
     VkImageViewCreateInfo info = {};
@@ -301,8 +326,63 @@ VkImageViewCreateInfo vkinit::imageview_create_info(VkFormat format, VkImage ima
     info.subresourceRange.layerCount = 1;
     info.subresourceRange.aspectMask = aspectFlags;
 
+    if (viewType == VK_IMAGE_VIEW_TYPE_CUBE)
+    {
+        info.viewType = VK_IMAGE_VIEW_TYPE_CUBE;
+        info.subresourceRange.layerCount = 6;
+    }
+    if (viewType == VK_IMAGE_VIEW_TYPE_2D_ARRAY)
+    {
+        info.viewType = VK_IMAGE_VIEW_TYPE_2D_ARRAY;
+    }
     return info;
 }
+
+VkImageViewCreateInfo vkinit::imageview_cubemap_create_info(VkFormat format, VkImage image, VkImageAspectFlags aspectFlags)
+{
+    VkImageViewCreateInfo info = {};
+    info.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
+    info.pNext = nullptr;
+
+    info.viewType = VK_IMAGE_VIEW_TYPE_CUBE;
+    info.format = format;
+
+    //6 layers
+    info.subresourceRange.baseMipLevel = 0;
+    info.subresourceRange.levelCount = 1;
+    info.subresourceRange.baseArrayLayer = 0;
+    info.subresourceRange.layerCount = 6;
+    info.subresourceRange.aspectMask = aspectFlags;
+    info.image = image;
+
+    return info;
+}
+
+VkSamplerCreateInfo vkinit::create_sampler(VkFilter filter, VkSamplerMipmapMode mipMode, VkSamplerAddressMode addressMode, int mipCount)
+{
+    VkSamplerCreateInfo info = {};
+    info.sType = VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO;
+    info.pNext = nullptr;
+
+    info.magFilter = filter;
+    info.minFilter = filter;
+
+    info.mipmapMode = mipMode;
+    info.addressModeU = addressMode;
+    info.addressModeV = addressMode;
+    info.addressModeW = addressMode;
+
+    info.mipLodBias = 0.0f;
+    info.compareOp = VK_COMPARE_OP_NEVER;
+    info.minLod = 0.0f;
+    info.maxLod = mipCount;
+
+    info.borderColor = VK_BORDER_COLOR_FLOAT_OPAQUE_WHITE;
+    info.maxAnisotropy = 1.0f;
+
+    return info;
+}
+
 //< image_set
 VkPipelineLayoutCreateInfo vkinit::pipeline_layout_create_info()
 {
@@ -334,4 +414,34 @@ VkPipelineShaderStageCreateInfo vkinit::pipeline_shader_stage_create_info(VkShad
     // the entry point of the shader
     info.pName = entry;
     return info;
+}
+
+VkVertexInputBindingDescription vkinit::vertex_binding_description(uint32_t binding, uint32_t stride, VkVertexInputRate input)
+{
+    VkVertexInputBindingDescription InputBinding = {};
+    InputBinding.binding = binding;
+    InputBinding.stride = stride;
+    InputBinding.inputRate = input;
+    return InputBinding;
+}
+
+VkVertexInputAttributeDescription vkinit::vertex_attribute_description(uint32_t binding, uint32_t location, VkFormat format, uint32_t offset)
+{
+    VkVertexInputAttributeDescription attrib;
+    attrib.location = location;
+    attrib.binding = binding;
+    attrib.format = format;
+    attrib.offset = offset;
+    return attrib;
+}
+
+VkPipelineVertexInputStateCreateInfo vkinit::pipeline_vertex_input_create_info(std::vector<VkVertexInputBindingDescription>& bindings, std::vector<VkVertexInputAttributeDescription>& attributes)
+{
+    VkPipelineVertexInputStateCreateInfo vertexInput;
+    vertexInput.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
+    vertexInput.vertexBindingDescriptionCount = static_cast<uint32_t>(bindings.size());
+    vertexInput.pVertexBindingDescriptions = bindings.data();
+    vertexInput.vertexAttributeDescriptionCount = static_cast<uint32_t>(attributes.size());
+    vertexInput.pVertexAttributeDescriptions = attributes.data();
+    return vertexInput;
 }

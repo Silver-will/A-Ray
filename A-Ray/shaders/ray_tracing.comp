@@ -1,0 +1,51 @@
+#version 450
+layout (local_size_x = 16, local_size_y = 16) in;
+layout(rgba8,set = 0, binding = 0) uniform image2D image;
+
+struct Sphere{
+	vec3 orig;
+	float radius;
+	vec3 color;
+	int material;
+};
+
+struct Plane{
+	vec3 q;
+	float d;
+	vec3 u;
+	int material;
+	vec3 v;
+	vec3 w;
+	vec3 color;
+	vec3 normal;
+};
+
+layout(set = 0, binding = 1) uniform UBO
+{
+	vec3 cameraPos;
+	float aspectRatio;
+	vec3 lightPos;
+	float fov;
+}
+
+layout (std140,set = 0, binding = 2) buffer Spheres
+{
+	Sphere spheres[];
+};
+
+layout (std140,set = 0, binding = 3) buffer Planes
+{
+	Plane planes[];
+};
+
+bool QuadHit()
+{
+}
+
+bool SphereHit()
+{
+}
+
+void main()
+{
+}

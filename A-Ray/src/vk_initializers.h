@@ -42,11 +42,17 @@ VkWriteDescriptorSet write_descriptor_image(VkDescriptorType type, VkDescriptorS
 VkWriteDescriptorSet write_descriptor_buffer(VkDescriptorType type, VkDescriptorSet dstSet,
     VkDescriptorBufferInfo* bufferInfo, uint32_t binding);
 VkDescriptorBufferInfo buffer_info(VkBuffer buffer, VkDeviceSize offset, VkDeviceSize range);
+VkSamplerCreateInfo create_sampler(VkFilter filter, VkSamplerMipmapMode mipMode, VkSamplerAddressMode addressMode, int mipCount);
 
 VkImageCreateInfo image_create_info(VkFormat format, VkImageUsageFlags usageFlags, VkExtent3D extent);
-VkImageViewCreateInfo imageview_create_info(VkFormat format, VkImage image, VkImageAspectFlags aspectFlags);
+VkImageCreateInfo image_cubemap_create_info(VkFormat format, VkImageUsageFlags usageFlags, VkExtent3D extent, uint32_t mipCount);
+VkImageViewCreateInfo imageview_create_info(VkFormat format, VkImage image, VkImageAspectFlags aspectFlags, VkImageViewType viewType);
+VkImageViewCreateInfo imageview_cubemap_create_info(VkFormat format, VkImage image, VkImageAspectFlags aspectFlags);
 VkPipelineLayoutCreateInfo pipeline_layout_create_info();
 VkPipelineShaderStageCreateInfo pipeline_shader_stage_create_info(VkShaderStageFlagBits stage,
     VkShaderModule shaderModule,
     const char * entry = "main");
+VkVertexInputBindingDescription vertex_binding_description(uint32_t binding, uint32_t stride, VkVertexInputRate input);
+VkVertexInputAttributeDescription vertex_attribute_description(uint32_t binding, uint32_t location, VkFormat format, uint32_t offset);
+VkPipelineVertexInputStateCreateInfo pipeline_vertex_input_create_info(std::vector<VkVertexInputBindingDescription>& bindings, std::vector<VkVertexInputAttributeDescription>& attributes);
 } // namespace vkinit
