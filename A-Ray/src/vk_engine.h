@@ -131,9 +131,9 @@ public:
 
 	void init_mesh_pipeline();
 	void init_default_data();
-	void init_ray_tracing_data();
-	std::vector<Sphere> spheres;
-	std::vector<Plane> planes;
+	void init_ray_traced_scene();
+	//std::vector<Sphere> spheres;
+	//std::vector<Plane> planes;
 	void init_triangle_pipeline();
 	
 	void immediate_submit(std::function<void(VkCommandBuffer cmd)>&& function);

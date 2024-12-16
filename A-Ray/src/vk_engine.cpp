@@ -68,7 +68,7 @@ void VulkanEngine::init()
 
 	init_default_data();
 
-	init_ray_tracing_data();
+	init_ray_traced_scene();
 	_isInitialized = true;
 
 	mainCamera.velocity = glm::vec3(0.f);
@@ -76,16 +76,6 @@ void VulkanEngine::init()
 
 	mainCamera.pitch = 0;
 	mainCamera.yaw = 0;
-
-	std::string structurePath = { "assets/sponza/sponza.gltf" };
-	auto structureFile = loadGltf(this, structurePath);
-	assert(structureFile.has_value());
-
-	auto skyCubeFile = loadGltf(this, "assets/cube.glb");
-	assert(skyCubeFile.has_value());
-
-	loadedScenes["sponza"] = *structureFile;
-	loadedScenes["sky_cube"] = *skyCubeFile;
 }
 
 void VulkanEngine::cleanup()
@@ -170,7 +160,7 @@ void VulkanEngine::draw()
 	draw_main(cmd);
 	
 	//transtion the draw image and the swapchain image into their correct transfer layouts
-	vkutil::transition_image(cmd, _drawImage.image, VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL);
+	vkutil::transition_image(cmd, _drawImage.image, VK_IMAGE_LAYOUT_GENERAL, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL);
 	vkutil::transition_image(cmd, _swapchainImages[swapchainImageIndex], VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);
 
 	VkExtent2D extent;
@@ -236,20 +226,6 @@ void VulkanEngine::draw_main(VkCommandBuffer cmd)
 	auto start = std::chrono::system_clock::now();
 	
 	draw_background(cmd);
-
-	vkutil::transition_image(cmd, _drawImage.image, VK_IMAGE_LAYOUT_GENERAL, VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL);
-
-	VkRenderingAttachmentInfo colorAttachment = vkinit::attachment_info(_drawImage.imageView, nullptr, VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL);
-	VkRenderingAttachmentInfo depthAttachment = vkinit::depth_attachment_info(_depthImage.imageView, VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL);
-
-	VkRenderingInfo renderInfo = vkinit::rendering_info(_windowExtent, &colorAttachment, &depthAttachment);
-
-	vkCmdBeginRendering(cmd, &renderInfo);
-	
-	draw_geometry(cmd);
-
-	vkCmdEndRendering(cmd);
-
 	auto end = std::chrono::system_clock::now();
 	auto elapsed = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
 	stats.mesh_draw_time = elapsed.count() / 1000.f;
@@ -344,112 +320,7 @@ bool is_visible(const RenderObject& obj, const glm::mat4& viewproj) {
 
 void VulkanEngine::draw_geometry(VkCommandBuffer cmd)
 {
-	std::vector<uint32_t> opaque_draws;
-	opaque_draws.reserve(drawCommands.OpaqueSurfaces.size());
-
-	for (int i = 0; i < drawCommands.OpaqueSurfaces.size(); i++) {
-		if (is_visible(drawCommands.OpaqueSurfaces[i], sceneData.viewproj)) {
-			opaque_draws.push_back(i);
-		}
-	}
-
-	// sort the opaque surfaces by material and mesh
-	std::sort(opaque_draws.begin(), opaque_draws.end(), [&](const auto& iA, const auto& iB) {
-		const RenderObject& A = drawCommands.OpaqueSurfaces[iA];
-	const RenderObject& B = drawCommands.OpaqueSurfaces[iB];
-	if (A.material == B.material) {
-		return A.indexBuffer < B.indexBuffer;
-	}
-	else {
-		return A.material < B.material;
-	}
-		});
-
-	//allocate a new uniform buffer for the scene data
-	AllocatedBuffer gpuSceneDataBuffer = create_buffer(sizeof(GPUSceneData), VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU);
-
-	//add it to the deletion queue of this frame so it gets deleted once its been used
-	get_current_frame()._deletionQueue.push_function([=, this]() {
-		destroy_buffer(gpuSceneDataBuffer);
-		});
-
-	//write the buffer
-	GPUSceneData* sceneUniformData = (GPUSceneData*)gpuSceneDataBuffer.allocation->GetMappedData();
-	*sceneUniformData = sceneData;
-
-	//create a descriptor set that binds that buffer and update it
-	VkDescriptorSet globalDescriptor = get_current_frame()._frameDescriptors.allocate(_device, _gpuSceneDataDescriptorLayout);
-
-	DescriptorWriter writer;
-	writer.write_buffer(0, gpuSceneDataBuffer.buffer, sizeof(GPUSceneData), 0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER);
-	writer.update_set(_device, globalDescriptor);
-
-	MaterialPipeline* lastPipeline = nullptr;
-	MaterialInstance* lastMaterial = nullptr;
-	VkBuffer lastIndexBuffer = VK_NULL_HANDLE;
-
-	auto draw = [&](const RenderObject& r) {
-		if (r.material != lastMaterial) {
-			lastMaterial = r.material;
-			if (r.material->pipeline != lastPipeline) {
-
-				lastPipeline = r.material->pipeline;
-				vkCmdBindPipeline(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, r.material->pipeline->pipeline);
-				vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, r.material->pipeline->layout, 0, 1,
-					&globalDescriptor, 0, nullptr);
-
-				VkViewport viewport = {};
-				viewport.x = 0;
-				viewport.y = 0;
-				viewport.width = (float)_windowExtent.width;
-				viewport.height = (float)_windowExtent.height;
-				viewport.minDepth = 0.f;
-				viewport.maxDepth = 1.f;
-
-				vkCmdSetViewport(cmd, 0, 1, &viewport);
-
-				VkRect2D scissor = {};
-				scissor.offset.x = 0;
-				scissor.offset.y = 0;
-				scissor.extent.width = _windowExtent.width;
-				scissor.extent.height = _windowExtent.height;
-
-				vkCmdSetScissor(cmd, 0, 1, &scissor);
-			}
-
-			vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, r.material->pipeline->layout, 1, 1,
-				&r.material->materialSet, 0, nullptr);
-		}
-		if (r.indexBuffer != lastIndexBuffer) {
-			lastIndexBuffer = r.indexBuffer;
-			vkCmdBindIndexBuffer(cmd, r.indexBuffer, 0, VK_INDEX_TYPE_UINT32);
-		}
-		// calculate final mesh matrix
-		GPUDrawPushConstants push_constants;
-		push_constants.worldMatrix = r.transform;
-		push_constants.vertexBuffer = r.vertexBufferAddress;
-
-		vkCmdPushConstants(cmd, r.material->pipeline->layout, VK_SHADER_STAGE_VERTEX_BIT, 0, sizeof(GPUDrawPushConstants), &push_constants);
-
-		stats.drawcall_count++;
-		stats.triangle_count += r.indexCount / 3;
-		vkCmdDrawIndexed(cmd, r.indexCount, 1, r.firstIndex, 0, 0);
-	};
-
-	stats.drawcall_count = 0;
-	stats.triangle_count = 0;
-
-	for (auto& r : opaque_draws) {
-		draw(drawCommands.OpaqueSurfaces[r]);
-	}
-
-	for (auto& r : drawCommands.TransparentSurfaces) {
-		draw(r);
-	}
-
-	// we delete the draw commands now that we processed them
-	drawCommands.OpaqueSurfaces.clear();
-	drawCommands.TransparentSurfaces.clear();
+	
 }
 
 
@@ -494,22 +365,6 @@ void VulkanEngine::run()
 		ImGui::Text("Update time %f ms", stats.update_time);
 		ImGui::Text("Camera eulers: %f, %f", mainCamera.pitch, mainCamera.yaw);
 		ImGui::End();
-
-		if (ImGui::Begin("background")) {
-			ImGui::SliderFloat("Render Scale", &renderScale, 0.3f, 1.f);
-
-			ComputeEffect& selected = backgroundEffects[currentBackgroundEffect];
-
-			ImGui::Text("Selected effect: ", selected.name);
-
-			ImGui::SliderInt("Effect Index", &currentBackgroundEffect, 0, backgroundEffects.size() - 1);
-
-			ImGui::InputFloat4("data1", (float*)&selected.data.data1);
-			ImGui::InputFloat4("data2", (float*)&selected.data.data2);
-			ImGui::InputFloat4("data3", (float*)&selected.data.data3);
-			ImGui::InputFloat4("data4", (float*)&selected.data.data4);
-		}
-		ImGui::End();
 		ImGui::Render();
 		
 
@@ -518,13 +373,8 @@ void VulkanEngine::run()
 		auto end_update = std::chrono::system_clock::now();
 		auto elapsed_update= std::chrono::duration_cast<std::chrono::microseconds>(end_update - start_update);
 		//stats.update_time = elapsed_update.count() / 1000.f;
-
-		
         draw();
-		
-
         glfwPollEvents();
-
 		auto end = std::chrono::system_clock::now();
 
 		//convert to microseconds (integer), and then come back to miliseconds
@@ -756,6 +606,7 @@ void VulkanEngine::init_descriptors()
 	{
 		DescriptorLayoutBuilder builder;
 		builder.add_binding(0, VK_DESCRIPTOR_TYPE_STORAGE_IMAGE);
+		//builder.add_binding(1, VK_D)
 		_drawImageDescriptorLayout = builder.build(_device, VK_SHADER_STAGE_COMPUTE_BIT);
 	}
 	{
@@ -1035,79 +886,6 @@ void VulkanEngine::init_compute_pipelines()
 	vkDestroyPipeline(_device, sky.pipeline, nullptr);
 	vkDestroyPipeline(_device, gradient.pipeline, nullptr);
 		});
-
-	/*VkShaderModule vertShader;
-	if (!vkutil::load_shader_module("shaders/skybox.vert.spv", _device, &vertShader))
-	{
-		fmt::println("Error when building the Skybox vertex shader module");
-	}
-
-	VkShaderModule fragShader;
-	if (!vkutil::load_shader_module("shaders/skybox.frag.spv", _device, &fragShader))
-	{
-		fmt::println("Error when building the Skybox fragment shader module");
-	}
-
-	VkPushConstantRange pushConstantSky{};
-	pushConstantSky.offset = 0;
-	pushConstantSky.size = sizeof(glm::mat4);
-	pushConstantSky.stageFlags = VK_SHADER_STAGE_VERTEX_BIT;
-
-	VkPipelineLayoutCreateInfo pipeline_layout_info = vkinit::pipeline_layout_create_info();
-	pipeline_layout_info.pPushConstantRanges = &pushConstantSky;
-	pipeline_layout_info.pushConstantRangeCount = 1;
-	pipeline_layout_info.pSetLayouts = &_skyboxDescriptorLayout;
-	pipeline_layout_info.setLayoutCount = 1;
-	VK_CHECK(vkCreatePipelineLayout(_device, &pipeline_layout_info, nullptr, &_skyboxPipelineLayout));
-	
-	std::vector<VkVertexInputBindingDescription> bindings{ 
-		vkinit::vertex_binding_description(0, sizeof(glm::vec3), VK_VERTEX_INPUT_RATE_VERTEX)
-	};
-
-	std::vector<VkVertexInputAttributeDescription> attributes{ 
-		vkinit::vertex_attribute_description(0,0,VK_FORMAT_R32G32B32_SFLOAT, sizeof(glm::vec3))
-	};
-
-	auto vertexInputState = vkinit::pipeline_vertex_input_create_info(bindings, attributes);
-
-	PipelineBuilder pipelineBuilder;
-
-	pipelineBuilder._pipelineLayout = _skyboxPipelineLayout;
-
-	pipelineBuilder.set_vertex_input_state(vertexInputState);
-
-	pipelineBuilder.set_shaders(vertShader, fragShader);
-	//it will draw triangles
-	pipelineBuilder.set_input_topology(VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST);
-	//filled triangles
-	pipelineBuilder.set_polygon_mode(VK_POLYGON_MODE_FILL);
-	//no backface culling
-	pipelineBuilder.set_cull_mode(VK_CULL_MODE_BACK_BIT, VK_FRONT_FACE_COUNTER_CLOCKWISE);
-	//no multisampling
-	pipelineBuilder.set_multisampling_none();
-	//no blending
-	pipelineBuilder.disable_blending();
-
-	//pipelineBuilder.enable_blending_additive();
-
-	pipelineBuilder.enable_depthtest(false,false, VK_COMPARE_OP_GREATER_OR_EQUAL);
-
-	//connect the image format we will draw into, from draw image
-	pipelineBuilder.set_color_attachment_format(_drawImage.imageFormat);
-	
-	//pipelineBuilder.set_depth_format(_depthImage.imageFormat);
-
-	//finally build the pipeline
-	_skyboxPipeline = pipelineBuilder.build_pipeline(_device);
-
-	vkDestroyShaderModule(_device, vertShader, nullptr);
-	vkDestroyShaderModule(_device, fragShader, nullptr);
-
-	_mainDeletionQueue.push_function([=]() {
-	vkDestroyPipelineLayout(_device, _skyboxPipelineLayout, nullptr);
-	vkDestroyPipeline(_device, _skyboxPipeline, nullptr);
-		});
-	*/
 }
 
 void VulkanEngine::init_default_data() {
@@ -1159,7 +937,7 @@ void VulkanEngine::init_default_data() {
 	
 }
 
-void VulkanEngine::init_ray_tracing_data()
+void VulkanEngine::init_ray_traced_scene()
 {
 
 }
@@ -1401,25 +1179,7 @@ void VulkanEngine::update_scene()
 {
 	mainCamera.update();
 	mainDrawContext.OpaqueSurfaces.clear();
-
-	sceneData.view = mainCamera.getViewMatrix();
-	sceneData.cameraPos = glm::vec4(mainCamera.position,0.0f);
-	// camera projection
-	sceneData.proj = glm::perspective(glm::radians(70.f), (float)_windowExtent.width / (float)_windowExtent.height, 10000.f, 0.1f);
-
-	// invert the Y direction on projection matrix so that we are more similar
-	// to opengl and gltf axis
-	sceneData.proj[1][1] *= -1;
-	sceneData.viewproj = sceneData.proj * sceneData.view;
-
-	//some default lighting parameters
-	sceneData.ambientColor = glm::vec4(.1f);
-	sceneData.sunlightColor = glm::vec4(1.5f);
-	sceneData.sunlightDirection = glm::vec4(-1, -2, 0, 1.f);
-
 	//Not an actual api Draw call
-	loadedScenes["sky_cube"]->Draw(glm::mat4{ 1.f }, drawCommands);
-	loadedScenes["sponza"]->Draw(glm::mat4{ 1.f }, drawCommands);
 }
 
 void VulkanEngine::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)

@@ -3,21 +3,25 @@ layout (local_size_x = 16, local_size_y = 16) in;
 layout(rgba8,set = 0, binding = 0) uniform image2D image;
 
 struct Sphere{
-	vec3 orig;
+	vec4 orig;
+	vec4 color;
 	float radius;
-	vec3 color;
-	int material;
+	uint material;
 };
 
+struct Triangle{
+	vec4 edge[3];
+}
+
 struct Plane{
-	vec3 q;
-	float d;
-	vec3 u;
-	int material;
-	vec3 v;
-	vec3 w;
-	vec3 color;
+	vec4 q;
+	vec4 u;
+	vec4 v;
+	vec4 w;
+	vec4 color;
 	vec3 normal;
+	float d;
+	uint material;
 };
 
 layout(set = 0, binding = 1) uniform UBO
@@ -38,6 +42,11 @@ layout (std140,set = 0, binding = 3) buffer Planes
 	Plane planes[];
 };
 
+layout (std140,set = 0, binding = 4) buffer Triangles
+{
+	
+};
+
 bool QuadHit()
 {
 }
@@ -48,4 +57,5 @@ bool SphereHit()
 
 void main()
 {
+	
 }
