@@ -2,16 +2,15 @@
 #include <glm/glm.hpp>
 struct Sphere
 {
-	Sphere(const glm::vec4& o, const glm::vec4& col, const float& r) : orig{ o }, color{ col }, radius{ r } {}
+	Sphere(const glm::vec4& o, const glm::vec3& col, const float& r) : orig{ o }, color{ col }, radius{ r } {}
 	glm::vec4 orig;
-	glm::vec4 color;
+	glm::vec3 color;
 	float radius;
-	uint32_t material;
 };
 
 struct Quad
 {
-	Quad(const glm::vec4& _Q, const glm::vec4& _u, const glm::vec4& _v, const glm::vec4& col) : q{_Q},u{_u},v{_v},color{col}{}
+	Quad(const glm::vec3& _q, const glm::vec3& _u, const glm::vec3& _v, const glm::vec4& col);
 	glm::vec4 q;
 	glm::vec4 u;
 	glm::vec4 v;
