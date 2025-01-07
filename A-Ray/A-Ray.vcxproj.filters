@@ -166,6 +166,12 @@
     <None Include="shaders\sky.comp">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="shaders\vertex_data.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shaders\shapes.glsl">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\CMakeLists.txt" />

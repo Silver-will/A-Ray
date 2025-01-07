@@ -68,7 +68,9 @@
   <ItemGroup>
     <None Include="shaders\gradient.comp" />
     <None Include="shaders\ray_tracing.comp" />
+    <None Include="shaders\shapes.glsl" />
     <None Include="shaders\sky.comp" />
+    <None Include="shaders\vertex_data.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\CMakeLists.txt" />

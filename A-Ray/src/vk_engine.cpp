@@ -263,6 +263,35 @@ void VulkanEngine::draw_background(VkCommandBuffer cmd)
 	vkCmdDispatch(cmd, std::ceil(_drawExtent.width / 16.0), std::ceil(_drawExtent.height / 16.0), 1);
 }
 
+void VulkanEngine::trace(VkCommandBuffer cmd)
+{
+	auto start_trace = std::chrono::system_clock::now();
+
+	//allocate a new uniform buffer for the scene data
+	AllocatedBuffer cameraDataBuffer = create_buffer(sizeof(CameraUBO), VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU);
+
+	//add it to the deletion queue of this frame so it gets deleted once its been used
+	get_current_frame()._deletionQueue.push_function([=, this]() {
+		destroy_buffer(cameraDataBuffer);
+		});
+
+	//write the buffer
+	GPUSceneData* cameraUniformData = (GPUSceneData*)cameraDataBuffer.allocation->GetMappedData();
+	*cameraUniformData = sceneData;
+
+	//create a descriptor set that binds that buffer and update it
+	VkDescriptorSet globalDescriptor = get_current_frame()._frameDescriptors.allocate(_device, _gpuSceneDataDescriptorLayout);
+
+	DescriptorWriter writer;
+	writer.write_buffer(0, cameraDataBuffer.buffer, sizeof(GPUSceneData), 0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER);
+	writer.update_set(_device, globalDescriptor);
+
+
+	auto end_trace = std::chrono::system_clock::now();
+	auto elapsed_trace = std::chrono::duration_cast<std::chrono::microseconds>(end_trace - start_trace);
+	stats.trace_time = elapsed_trace.count() / 1000.0f;
+}
+
 void VulkanEngine::resize_swapchain()
 {
 	vkDeviceWaitIdle(_device);
@@ -605,8 +634,10 @@ void VulkanEngine::init_descriptors()
 
 	{
 		DescriptorLayoutBuilder builder;
-		builder.add_binding(0, VK_DESCRIPTOR_TYPE_STORAGE_IMAGE);
-		//builder.add_binding(1, VK_D)
+		//builder.add_binding(0, VK_DESCRIPTOR_TYPE_STORAGE_IMAGE);
+		//builder.add_binding(1, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER);
+		//builder.add_binding(2, VK_DESCRIPTOR_TYPE_STORAGE_BUFFER);
+		//builder.add_binding(3, VK_DESCRIPTOR_TYPE_STORAGE_BUFFER);
 		_drawImageDescriptorLayout = builder.build(_device, VK_SHADER_STAGE_COMPUTE_BIT);
 	}
 	{
@@ -937,10 +968,6 @@ void VulkanEngine::init_default_data() {
 	
 }
 
-void VulkanEngine::init_ray_traced_scene()
-{
-
-}
 
 void VulkanEngine::init_imgui()
 {
@@ -1047,6 +1074,43 @@ void VulkanEngine::destroy_buffer(const AllocatedBuffer& buffer)
 	vmaDestroyBuffer(_allocator, buffer.buffer, buffer.allocation);
 }
 
+
+void VulkanEngine::init_ray_traced_scene()
+{
+
+	const size_t sphereBufferSize = object_data.spheres.size() * sizeof(Sphere);
+	const size_t quadBufferSize = object_data.quads.size() * sizeof(Quad);
+
+	object_data.sphereBuffer = create_buffer(sphereBufferSize, VK_BUFFER_USAGE_STORAGE_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_GPU_ONLY);
+	object_data.quadBuffer = create_buffer(quadBufferSize, VK_BUFFER_USAGE_STORAGE_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_DST_BIT, VMA_MEMORY_USAGE_GPU_ONLY);
+
+	AllocatedBuffer staging = create_buffer(sphereBufferSize + quadBufferSize, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_ONLY);
+
+	void* data = staging.allocation->GetMappedData();
+
+	memcpy(data, object_data.spheres.data(), sphereBufferSize);
+
+	memcpy((char*)data + sphereBufferSize, object_data.quads.data(), quadBufferSize);
+
+	immediate_submit([&](VkCommandBuffer cmd) {
+		VkBufferCopy vertexCopy{ 0 };
+		vertexCopy.dstOffset = 0;
+		vertexCopy.srcOffset = 0;
+		vertexCopy.size = sphereBufferSize;
+
+		vkCmdCopyBuffer(cmd, staging.buffer, object_data.sphereBuffer.buffer, 1, &vertexCopy);
+
+		VkBufferCopy indexCopy{ 0 };
+		indexCopy.dstOffset = 0;
+		indexCopy.srcOffset = sphereBufferSize;
+		indexCopy.size = quadBufferSize;
+
+		vkCmdCopyBuffer(cmd, staging.buffer, object_data.quadBuffer.buffer, 1, &indexCopy);
+	});
+
+	destroy_buffer(staging);
+}
+
 GPUMeshBuffers VulkanEngine::uploadMesh(std::span<uint32_t> indices, std::span<Vertex> vertices)
 {
 	const size_t vertexBufferSize = vertices.size() * sizeof(Vertex);
@@ -1074,7 +1138,7 @@ GPUMeshBuffers VulkanEngine::uploadMesh(std::span<uint32_t> indices, std::span<V
 	memcpy((char*)data + vertexBufferSize, indices.data(), indexBufferSize);
 
 	immediate_submit([&](VkCommandBuffer cmd) {
-		VkBufferCopy vertexCopy{ 0 };
+	VkBufferCopy vertexCopy{ 0 };
 	vertexCopy.dstOffset = 0;
 	vertexCopy.srcOffset = 0;
 	vertexCopy.size = vertexBufferSize;

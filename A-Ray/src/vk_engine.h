@@ -65,6 +65,16 @@ public:
 	VkDescriptorSet _drawImageDescriptors;
 	VkDescriptorSetLayout _drawImageDescriptorLayout;
 
+	//Ray tracing scene Info
+	struct{
+		std::vector<Sphere> spheres;
+		std::vector<Quad> quads;
+
+		AllocatedBuffer sphereBuffer;
+		AllocatedBuffer quadBuffer;
+	}object_data;
+
+
 	bool resize_requested = false;
 	bool _isInitialized{ false };
 	int _frameNumber{ 0 };
@@ -154,6 +164,7 @@ private:
 	void draw_main(VkCommandBuffer cmd);
 	void draw_background(VkCommandBuffer cmd);
 	void draw_geometry(VkCommandBuffer cmd);
+	void trace(VkCommandBuffer cmd);
 	void resize_swapchain();
 	void init_vulkan();
 	void init_imgui();

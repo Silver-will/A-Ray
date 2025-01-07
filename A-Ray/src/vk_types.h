@@ -34,6 +34,12 @@ enum class MaterialPass :uint8_t {
     Other
 };
 
+struct CameraUBO{
+    glm::vec3 pos;
+    float fov;
+    glm::vec3 lookat;
+    float focus_dist;
+};
 struct Bounds {
     glm::vec3 origin;
     float sphereRadius;
@@ -122,6 +128,7 @@ struct EngineStats {
     float scene_update_time;
     float mesh_draw_time;
     float ui_draw_time;
+    float trace_time;
     float update_time;
 };
 #define VK_CHECK(x)                                                     \

@@ -1,35 +1,28 @@
 #version 450
+
+#extension GL_GOOGLE_include_directive : require
+#extension GL_EXT_buffer_reference : require
+
 layout (local_size_x = 16, local_size_y = 16) in;
-layout(rgba8,set = 0, binding = 0) uniform image2D image;
+layout(rgba16f, set = 0, binding = 0) uniform image2D image;
 
-struct Sphere{
-	vec4 orig;
-	vec4 color;
-	float radius;
-	uint material;
+#include "shapes.glsl"
+#include "vertex_data.glsl"
+
+layout(buffer_reference, std430) readonly buffer VertexBuffer{ 
+	Vertex vertices[];
 };
 
-struct Triangle{
-	vec4 edge[3];
-}
-
-struct Plane{
-	vec4 q;
-	vec4 u;
-	vec4 v;
-	vec4 w;
-	vec4 color;
-	vec3 normal;
-	float d;
-	uint material;
-};
+//push constants block
+layout( push_constant ) uniform constants
+{
+	mat4 render_matrix;
+	VertexBuffer vertexBuffer;
+} PushConstants;
 
 layout(set = 0, binding = 1) uniform UBO
 {
-	vec3 cameraPos;
-	float aspectRatio;
-	vec3 lightPos;
-	float fov;
+	Camera camera;
 }
 
 layout (std140,set = 0, binding = 2) buffer Spheres
@@ -42,20 +35,12 @@ layout (std140,set = 0, binding = 3) buffer Planes
 	Plane planes[];
 };
 
-layout (std140,set = 0, binding = 4) buffer Triangles
-{
-	
-};
-
-bool QuadHit()
-{
-}
-
-bool SphereHit()
-{
-}
-
 void main()
 {
+	ivec2 texelCoord = ivec2(gl_GlobalInvocationID.xy);
+	ivec2 dim = imageSize(image);
+
+	vec3 rayO = UBO.camera.pos;
+	vec3 rayD = normalize(vec3((-1.0 + 2.0 * uv) * vec2(UBO.aspectRatio, 1.0), -1.0));
 	
 }

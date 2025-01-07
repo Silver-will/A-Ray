@@ -17,8 +17,8 @@ struct Quad
 	glm::vec4 v;
 	glm::vec4 w;
 	glm::vec4 color;
+	glm::vec3 normal;
 	float d;
-	//glm::vec3 normal;
 	//uint32_t material;
 };
 
