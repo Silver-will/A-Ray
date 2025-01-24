@@ -1,7 +1,8 @@
 struct Sphere{
 	vec4 orig;
-	vec3 color;
+	vec4 color;
 	float radius;
+	uint material;
 };
 
 struct Triangle{
@@ -14,7 +15,6 @@ struct Plane{
 	vec4 v;
 	vec4 w;
 	vec4 color;
-	vec3 normal;
 	float d;
 };
 
