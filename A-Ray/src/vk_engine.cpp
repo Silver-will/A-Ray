@@ -1077,6 +1077,9 @@ void VulkanEngine::destroy_buffer(const AllocatedBuffer& buffer)
 
 void VulkanEngine::init_ray_traced_scene()
 {
+	//initialize scene data
+	object_data.spheres.push_back(Sphere(glm::vec4(0),glm::vec3(1,0,0),0.5f));
+	object_data.quads.push_back(Quad(glm::vec3(-1, -1, 0), glm::vec3(4, 0, 0), glm::vec3(0, 4, 0), glm::vec4(1,1,0,0)));
 
 	const size_t sphereBufferSize = object_data.spheres.size() * sizeof(Sphere);
 	const size_t quadBufferSize = object_data.quads.size() * sizeof(Quad);
