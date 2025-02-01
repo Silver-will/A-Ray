@@ -4,8 +4,20 @@ struct Sphere{
 	float radius;
 };
 
+struct AABB{
+	vec4 min;
+	vec4 max;
+}
+
+struct Ray{
+	vec4 orig;
+	vec4 dir;
+};
+
 struct Triangle{
 	vec4 edge[3];
+	vec4 normal;
+	vec4 colour;
 }
 
 struct Plane{
@@ -18,10 +30,12 @@ struct Plane{
 	float d;
 };
 
-bool QuadHit()
+bool QuadHit(inout Ray r)
 {
 }
 
-bool SphereHit()
+bool SphereHit(inout Ray r)
 {
 }
+
+bool TriangleHit(inout Ray r)
