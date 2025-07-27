@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\external\dfdutils\dfd2vk.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\tests\unittests\image_unittests.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\tests\unittests\test_fragment_uri.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\tests\unittests\test_string_to_vkformat.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\tests\unittests\unittests.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\tests\unittests\vkformat_list.inl">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\tests\unittests\wthelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Repos\A-Ray\third_party\ktx\tests\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\Repos\A-Ray\third_party\ktx\tests\tests.cmake" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{D50AD210-9599-3ED9-A0BA-8C237435365B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{6A9B533F-F454-3753-B97C-1CA78D3604DC}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{B6BAA8D1-53BE-3E27-B0BA-2DE2202EA393}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>ktx_read</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Repos\A-Ray\test\third_party\ktx\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ktx_read.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ktx_read</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Repos\A-Ray\test\third_party\ktx\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ktx_read.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ktx_read</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Repos\A-Ray\test\third_party\ktx\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">ktx_read.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">ktx_read</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Repos\A-Ray\test\third_party\ktx\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">ktx_read.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">ktx_read</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\ktx\external\basisu\transcoder;D:\Repos\A-Ray\third_party\ktx\external;D:\Repos\A-Ray\third_party\ktx\external\basisu\zstd;D:\Repos\A-Ray\third_party\ktx\utils;D:\Repos\A-Ray\third_party\ktx\external\dfdutils;D:\Repos\A-Ray\third_party\ktx\external\astc-encoder\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/Repos/A-Ray/third_party/ktx/other_include" /utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CallingConvention>StdCall</CallingConvention>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_DEBUG;DEBUG;LIBKTX;SUPPORT_SOFTWARE_ETC_UNPACK=1;KHRONOS_STATIC;BASISD_SUPPORT_FXT1=0;_DISABLE_CONSTEXPR_MUTEX_CONSTRUCTOR;BASISU_NO_ITERATOR_DEBUG_LEVEL;KTX_FEATURE_KTX1;KTX_FEATURE_KTX2;BASISD_SUPPORT_KTX2_ZSTD=0;BASISD_SUPPORT_KTX2=0;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;DEBUG;LIBKTX;SUPPORT_SOFTWARE_ETC_UNPACK=1;KHRONOS_STATIC;BASISD_SUPPORT_FXT1=0;_DISABLE_CONSTEXPR_MUTEX_CONSTRUCTOR;BASISU_NO_ITERATOR_DEBUG_LEVEL;KTX_FEATURE_KTX1;KTX_FEATURE_KTX2;BASISD_SUPPORT_KTX2_ZSTD=0;BASISD_SUPPORT_KTX2=0;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\ktx\external\basisu\transcoder;D:\Repos\A-Ray\third_party\ktx\external;D:\Repos\A-Ray\third_party\ktx\external\basisu\zstd;D:\Repos\A-Ray\third_party\ktx\utils;D:\Repos\A-Ray\third_party\ktx\external\dfdutils;D:\Repos\A-Ray\third_party\ktx\external\astc-encoder\Source;D:\Repos\A-Ray\third_party\ktx\other_include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\ktx\external\basisu\transcoder;D:\Repos\A-Ray\third_party\ktx\external;D:\Repos\A-Ray\third_party\ktx\external\basisu\zstd;D:\Repos\A-Ray\third_party\ktx\utils;D:\Repos\A-Ray\third_party\ktx\external\dfdutils;D:\Repos\A-Ray\third_party\ktx\external\astc-encoder\Source;D:\Repos\A-Ray\third_party\ktx\other_include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\ktx\external\basisu\transcoder;D:\Repos\A-Ray\third_party\ktx\external;D:\Repos\A-Ray\third_party\ktx\external\basisu\zstd;D:\Repos\A-Ray\third_party\ktx\utils;D:\Repos\A-Ray\third_party\ktx\external\dfdutils;D:\Repos\A-Ray\third_party\ktx\external\astc-encoder\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/Repos/A-Ray/third_party/ktx/other_include" /utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;LIBKTX;SUPPORT_SOFTWARE_ETC_UNPACK=1;KHRONOS_STATIC;BASISD_SUPPORT_FXT1=0;_DISABLE_CONSTEXPR_MUTEX_CONSTRUCTOR;BASISU_NO_ITERATOR_DEBUG_LEVEL;KTX_FEATURE_KTX1;KTX_FEATURE_KTX2;BASISD_SUPPORT_KTX2_ZSTD=0;BASISD_SUPPORT_KTX2=0;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;LIBKTX;SUPPORT_SOFTWARE_ETC_UNPACK=1;KHRONOS_STATIC;BASISD_SUPPORT_FXT1=0;_DISABLE_CONSTEXPR_MUTEX_CONSTRUCTOR;BASISU_NO_ITERATOR_DEBUG_LEVEL;KTX_FEATURE_KTX1;KTX_FEATURE_KTX2;BASISD_SUPPORT_KTX2_ZSTD=0;BASISD_SUPPORT_KTX2=0;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\ktx\external\basisu\transcoder;D:\Repos\A-Ray\third_party\ktx\external;D:\Repos\A-Ray\third_party\ktx\external\basisu\zstd;D:\Repos\A-Ray\third_party\ktx\utils;D:\Repos\A-Ray\third_party\ktx\external\dfdutils;D:\Repos\A-Ray\third_party\ktx\external\astc-encoder\Source;D:\Repos\A-Ray\third_party\ktx\other_include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\ktx\external\basisu\transcoder;D:\Repos\A-Ray\third_party\ktx\external;D:\Repos\A-Ray\third_party\ktx\external\basisu\zstd;D:\Repos\A-Ray\third_party\ktx\utils;D:\Repos\A-Ray\third_party\ktx\external\dfdutils;D:\Repos\A-Ray\third_party\ktx\external\astc-encoder\Source;D:\Repos\A-Ray\third_party\ktx\other_include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\ktx\external\basisu\transcoder;D:\Repos\A-Ray\third_party\ktx\external;D:\Repos\A-Ray\third_party\ktx\external\basisu\zstd;D:\Repos\A-Ray\third_party\ktx\utils;D:\Repos\A-Ray\third_party\ktx\external\dfdutils;D:\Repos\A-Ray\third_party\ktx\external\astc-encoder\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/Repos/A-Ray/third_party/ktx/other_include" /utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;LIBKTX;SUPPORT_SOFTWARE_ETC_UNPACK=1;KHRONOS_STATIC;BASISD_SUPPORT_FXT1=0;_DISABLE_CONSTEXPR_MUTEX_CONSTRUCTOR;BASISU_NO_ITERATOR_DEBUG_LEVEL;KTX_FEATURE_KTX1;KTX_FEATURE_KTX2;BASISD_SUPPORT_KTX2_ZSTD=0;BASISD_SUPPORT_KTX2=0;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;LIBKTX;SUPPORT_SOFTWARE_ETC_UNPACK=1;KHRONOS_STATIC;BASISD_SUPPORT_FXT1=0;_DISABLE_CONSTEXPR_MUTEX_CONSTRUCTOR;BASISU_NO_ITERATOR_DEBUG_LEVEL;KTX_FEATURE_KTX1;KTX_FEATURE_KTX2;BASISD_SUPPORT_KTX2_ZSTD=0;BASISD_SUPPORT_KTX2=0;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\ktx\external\basisu\transcoder;D:\Repos\A-Ray\third_party\ktx\external;D:\Repos\A-Ray\third_party\ktx\external\basisu\zstd;D:\Repos\A-Ray\third_party\ktx\utils;D:\Repos\A-Ray\third_party\ktx\external\dfdutils;D:\Repos\A-Ray\third_party\ktx\external\astc-encoder\Source;D:\Repos\A-Ray\third_party\ktx\other_include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\ktx\external\basisu\transcoder;D:\Repos\A-Ray\third_party\ktx\external;D:\Repos\A-Ray\third_party\ktx\external\basisu\zstd;D:\Repos\A-Ray\third_party\ktx\utils;D:\Repos\A-Ray\third_party\ktx\external\dfdutils;D:\Repos\A-Ray\third_party\ktx\external\astc-encoder\Source;D:\Repos\A-Ray\third_party\ktx\other_include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\ktx\external\basisu\transcoder;D:\Repos\A-Ray\third_party\ktx\external;D:\Repos\A-Ray\third_party\ktx\external\basisu\zstd;D:\Repos\A-Ray\third_party\ktx\utils;D:\Repos\A-Ray\third_party\ktx\external\dfdutils;D:\Repos\A-Ray\third_party\ktx\external\astc-encoder\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/Repos/A-Ray/third_party/ktx/other_include" /utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;LIBKTX;SUPPORT_SOFTWARE_ETC_UNPACK=1;KHRONOS_STATIC;BASISD_SUPPORT_FXT1=0;_DISABLE_CONSTEXPR_MUTEX_CONSTRUCTOR;BASISU_NO_ITERATOR_DEBUG_LEVEL;KTX_FEATURE_KTX1;KTX_FEATURE_KTX2;BASISD_SUPPORT_KTX2_ZSTD=0;BASISD_SUPPORT_KTX2=0;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;LIBKTX;SUPPORT_SOFTWARE_ETC_UNPACK=1;KHRONOS_STATIC;BASISD_SUPPORT_FXT1=0;_DISABLE_CONSTEXPR_MUTEX_CONSTRUCTOR;BASISU_NO_ITERATOR_DEBUG_LEVEL;KTX_FEATURE_KTX1;KTX_FEATURE_KTX2;BASISD_SUPPORT_KTX2_ZSTD=0;BASISD_SUPPORT_KTX2=0;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\ktx\external\basisu\transcoder;D:\Repos\A-Ray\third_party\ktx\external;D:\Repos\A-Ray\third_party\ktx\external\basisu\zstd;D:\Repos\A-Ray\third_party\ktx\utils;D:\Repos\A-Ray\third_party\ktx\external\dfdutils;D:\Repos\A-Ray\third_party\ktx\external\astc-encoder\Source;D:\Repos\A-Ray\third_party\ktx\other_include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\ktx\external\basisu\transcoder;D:\Repos\A-Ray\third_party\ktx\external;D:\Repos\A-Ray\third_party\ktx\external\basisu\zstd;D:\Repos\A-Ray\third_party\ktx\utils;D:\Repos\A-Ray\third_party\ktx\external\dfdutils;D:\Repos\A-Ray\third_party\ktx\external\astc-encoder\Source;D:\Repos\A-Ray\third_party\ktx\other_include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Repos\A-Ray\third_party\ktx\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/Repos/A-Ray/third_party/ktx/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Repos/A-Ray -BD:/Repos/A-Ray/test --check-stamp-file D:/Repos/A-Ray/test/third_party/ktx/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.25\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.25\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CMakePrintHelpers.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CTest.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CTestTargets.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CTestUseLaunchers.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\DartConfiguration.tcl.in;C:\Program Files\CMake\share\cmake-3.25\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\WriteBasicConfigVersionFile.cmake;C:\Program Files\CMake\share\cmake-3.25\Templates\CPackConfig.cmake.in;D:\Repos\A-Ray\test\CMakeFiles\cmake.verify_globs;D:\Repos\A-Ray\third_party\ktx\cmake\codesign.cmake;D:\Repos\A-Ray\third_party\ktx\cmake\cputypetest.cmake;D:\Repos\A-Ray\third_party\ktx\cmake\modules\FindBash.cmake;D:\Repos\A-Ray\third_party\ktx\cmake\modules\GetGitRevisionDescription.cmake;D:\Repos\A-Ray\third_party\ktx\cmake\modules\KtxDependentVariable.cmake;D:\Repos\A-Ray\third_party\ktx\cmake\version.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Repos\A-Ray\test\third_party\ktx\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/Repos/A-Ray/third_party/ktx/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Repos/A-Ray -BD:/Repos/A-Ray/test --check-stamp-file D:/Repos/A-Ray/test/third_party/ktx/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.25\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.25\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CMakePrintHelpers.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CTest.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CTestTargets.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CTestUseLaunchers.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\DartConfiguration.tcl.in;C:\Program Files\CMake\share\cmake-3.25\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\WriteBasicConfigVersionFile.cmake;C:\Program Files\CMake\share\cmake-3.25\Templates\CPackConfig.cmake.in;D:\Repos\A-Ray\test\CMakeFiles\cmake.verify_globs;D:\Repos\A-Ray\third_party\ktx\cmake\codesign.cmake;D:\Repos\A-Ray\third_party\ktx\cmake\cputypetest.cmake;D:\Repos\A-Ray\third_party\ktx\cmake\modules\FindBash.cmake;D:\Repos\A-Ray\third_party\ktx\cmake\modules\GetGitRevisionDescription.cmake;D:\Repos\A-Ray\third_party\ktx\cmake\modules\KtxDependentVariable.cmake;D:\Repos\A-Ray\third_party\ktx\cmake\version.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Repos\A-Ray\test\third_party\ktx\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/Repos/A-Ray/third_party/ktx/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Repos/A-Ray -BD:/Repos/A-Ray/test --check-stamp-file D:/Repos/A-Ray/test/third_party/ktx/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.25\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.25\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CMakePrintHelpers.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CTest.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CTestTargets.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CTestUseLaunchers.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\DartConfiguration.tcl.in;C:\Program Files\CMake\share\cmake-3.25\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\WriteBasicConfigVersionFile.cmake;C:\Program Files\CMake\share\cmake-3.25\Templates\CPackConfig.cmake.in;D:\Repos\A-Ray\test\CMakeFiles\cmake.verify_globs;D:\Repos\A-Ray\third_party\ktx\cmake\codesign.cmake;D:\Repos\A-Ray\third_party\ktx\cmake\cputypetest.cmake;D:\Repos\A-Ray\third_party\ktx\cmake\modules\FindBash.cmake;D:\Repos\A-Ray\third_party\ktx\cmake\modules\GetGitRevisionDescription.cmake;D:\Repos\A-Ray\third_party\ktx\cmake\modules\KtxDependentVariable.cmake;D:\Repos\A-Ray\third_party\ktx\cmake\version.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Repos\A-Ray\test\third_party\ktx\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/Repos/A-Ray/third_party/ktx/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Repos/A-Ray -BD:/Repos/A-Ray/test --check-stamp-file D:/Repos/A-Ray/test/third_party/ktx/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.25\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.25\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CMakePrintHelpers.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CTest.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CTestTargets.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\CTestUseLaunchers.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\DartConfiguration.tcl.in;C:\Program Files\CMake\share\cmake-3.25\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.25\Modules\WriteBasicConfigVersionFile.cmake;C:\Program Files\CMake\share\cmake-3.25\Templates\CPackConfig.cmake.in;D:\Repos\A-Ray\test\CMakeFiles\cmake.verify_globs;D:\Repos\A-Ray\third_party\ktx\cmake\codesign.cmake;D:\Repos\A-Ray\third_party\ktx\cmake\cputypetest.cmake;D:\Repos\A-Ray\third_party\ktx\cmake\modules\FindBash.cmake;D:\Repos\A-Ray\third_party\ktx\cmake\modules\GetGitRevisionDescription.cmake;D:\Repos\A-Ray\third_party\ktx\cmake\modules\KtxDependentVariable.cmake;D:\Repos\A-Ray\third_party\ktx\cmake\version.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Repos\A-Ray\test\third_party\ktx\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\include\KHR\khr_df.h" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\include\ktx.h" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\astc_codec.cpp" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\basis_sgd.h" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\basis_transcode.cpp" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\miniz_wrapper.cpp" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\external\basisu\transcoder\basisu_containers.h" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\external\basisu\transcoder\basisu_containers_impl.h" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\external\basisu\transcoder\basisu_file_headers.h" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\external\basisu\transcoder\basisu_transcoder_internal.h" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\external\basisu\transcoder\basisu_transcoder_uastc.h" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\external\basisu\transcoder\basisu_transcoder.cpp" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\external\basisu\transcoder\basisu_transcoder.h" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\external\basisu\transcoder\basisu.h" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\external\basisu\zstd\zstd.c" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\checkheader.c" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\external\dfdutils\createdfd.c" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\external\dfdutils\colourspaces.c" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\external\dfdutils\dfd.h" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\external\dfdutils\interpretdfd.c" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\external\dfdutils\printdfd.c" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\external\dfdutils\queries.c" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\external\dfdutils\vk2dfd.c" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\external\dfdutils\vk2dfd.inl" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\external\dfdutils\vulkan\vk_platform.h" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\external\dfdutils\vulkan\vulkan_core.h" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\etcunpack.cxx" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\filestream.c" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\filestream.h" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\formatsize.h" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\gl_format.h" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\hashlist.c" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\info.c" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\ktxint.h" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\memstream.c" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\memstream.h" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\strings.c" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\swap.c" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\texture.c" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\texture.h" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\texture2.c" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\texture2.h" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\texture_funcs.inl" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\uthash.h" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\vk2gl.h" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\vk_format.h" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\vkFormat2glFormat.inl" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\vkFormat2glInternalFormat.inl" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\vkFormat2glType.inl" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\vkformat_check.c" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\vkformat_check_variant.c" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\vkformat_enum.h" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\vkformat_str.c" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\vkformat_typesize.c" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\external\etcdec\etcdec.cxx" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\gl_funclist.inl" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\gl_funcs.c" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\gl_funcs.h" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\glloader.c" />
+    <None Include="D:\Repos\A-Ray\third_party\ktx\lib\internalexport.def" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\texture1.c" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\texture1.h" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\include\ktxvulkan.h" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\vk_funcs.c" />
+    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\vk_funcs.h" />
+    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\vkloader.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\Repos\A-Ray\test\ZERO_CHECK.vcxproj">
+      <Project>{AFCB1BA0-13D2-3A27-A426-9FECFC07ACA6}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\Repos\A-Ray\test\third_party\ktx\external\astc-encoder\Source\astcenc-avx2-static.vcxproj">
+      <Project>{BE3C9628-41E3-37DB-8D18-526221308D4E}</Project>
+      <Name>astcenc-avx2-static</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

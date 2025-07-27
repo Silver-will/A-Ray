@@ -1,0 +1,7 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.25/Modules/CTest.cmake
+C:/Program Files/CMake/share/cmake-3.25/Modules/CTestTargets.cmake
+C:/Program Files/CMake/share/cmake-3.25/Modules/CTestUseLaunchers.cmake
+C:/Program Files/CMake/share/cmake-3.25/Modules/DartConfiguration.tcl.in
+D:/Repos/A-Ray/test/CMakeFiles/cmake.verify_globs
+D:/Repos/A-Ray/third_party/ktx/external/astc-encoder/CMakeLists.txt

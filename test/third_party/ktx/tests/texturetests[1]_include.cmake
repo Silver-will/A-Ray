@@ -1,0 +1,1 @@
+include("D:/Repos/A-Ray/test/third_party/ktx/tests/texturetests[1]_include-${CTEST_CONFIGURATION_TYPE}.cmake")

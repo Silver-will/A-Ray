@@ -1,0 +1,5 @@
+# CMake generation dependency list for this directory.
+D:/Repos/A-Ray/test/CMakeFiles/cmake.verify_globs
+D:/Repos/A-Ray/third_party/ktx/external/astc-encoder/Source/CMakeLists.txt
+D:/Repos/A-Ray/third_party/ktx/external/astc-encoder/Source/cmake_compiler.cmake
+D:/Repos/A-Ray/third_party/ktx/external/astc-encoder/Source/cmake_core.cmake

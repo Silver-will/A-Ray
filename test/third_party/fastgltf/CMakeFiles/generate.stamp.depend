@@ -1,0 +1,11 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.25/Modules/BasicConfigVersion-SameMajorVersion.cmake.in
+C:/Program Files/CMake/share/cmake-3.25/Modules/CMakePackageConfigHelpers.cmake
+C:/Program Files/CMake/share/cmake-3.25/Modules/FetchContent.cmake
+C:/Program Files/CMake/share/cmake-3.25/Modules/GNUInstallDirs.cmake
+C:/Program Files/CMake/share/cmake-3.25/Modules/WriteBasicConfigVersionFile.cmake
+D:/Repos/A-Ray/test/CMakeFiles/cmake.verify_globs
+D:/Repos/A-Ray/third_party/fastgltf/CMakeLists.txt
+D:/Repos/A-Ray/third_party/fastgltf/cmake/add_source_directory.cmake
+D:/Repos/A-Ray/third_party/fastgltf/cmake/compilers.cmake
+D:/Repos/A-Ray/third_party/fastgltf/cmake/dependencies.cmake

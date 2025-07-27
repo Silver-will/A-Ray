@@ -1,0 +1,4 @@
+# CMake generation dependency list for this directory.
+D:/Repos/A-Ray/test/CMakeFiles/cmake.verify_globs
+D:/Repos/A-Ray/third_party/glfw/CMake/glfw3.pc.in
+D:/Repos/A-Ray/third_party/glfw/src/CMakeLists.txt
