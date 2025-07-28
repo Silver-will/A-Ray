@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 
+
 #include "../vk_engine.h"
 #include "../vk_initializers.h"
 #include "../vk_types.h"
@@ -26,6 +27,5 @@ struct BaseRenderer
 	virtual void LoadAssets() = 0;
 	virtual void InitImgui()=0;
 	VulkanEngine* engine{ nullptr };
-
 };
 

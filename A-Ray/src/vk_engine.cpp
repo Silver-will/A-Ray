@@ -25,7 +25,7 @@ constexpr bool bUseValidationLayers = false;
 #endif
 
 #include "../../tracy/public/tracy/Tracy.hpp"
-#include <vma/vk_mem_alloc.h>
+#include <vk_mem_alloc.h>
 
 
 #include <imgui/imgui.h>
