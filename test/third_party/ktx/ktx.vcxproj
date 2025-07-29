@@ -88,7 +88,7 @@
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <FloatingPointModel>Precise</FloatingPointModel>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
       <Optimization>Disabled</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -124,7 +124,7 @@
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <FloatingPointModel>Precise</FloatingPointModel>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
       <Optimization>MaxSpeed</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -162,7 +162,7 @@
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <FloatingPointModel>Precise</FloatingPointModel>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
       <Optimization>MaxSpeed</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -201,7 +201,7 @@
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <FloatingPointModel>Precise</FloatingPointModel>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
       <Optimization>MaxSpeed</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -341,10 +341,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\vkformat_str.c" />
     <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\vkformat_typesize.c" />
     <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\external\etcdec\etcdec.cxx" />
-    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\gl_funclist.inl" />
-    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\gl_funcs.c" />
-    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\gl_funcs.h" />
-    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\glloader.c" />
     <None Include="D:\Repos\A-Ray\third_party\ktx\lib\internalexport.def" />
     <None Include="D:\Repos\A-Ray\third_party\ktx\lib\internalexport_write.def" />
     <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\texture1.c" />

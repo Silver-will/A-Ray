@@ -112,7 +112,7 @@ cd D:\Repos\A-Ray\third_party\ktx
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-C:\Windows\System32\bash.exe -c "\"scripts/mkversion\" \"-v\" \"v4.4.0\" \"-o\" \"version.h\" \"lib\""
+bash.exe -c "\"scripts/mkversion\" \"-v\" \"v4.4.0\" \"-o\" \"version.h\" \"lib\""
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -129,7 +129,7 @@ cd D:\Repos\A-Ray\third_party\ktx
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-C:\Windows\System32\bash.exe -c "\"scripts/mkversion\" \"-v\" \"v4.4.0\" \"-o\" \"version.h\" \"lib\""
+bash.exe -c "\"scripts/mkversion\" \"-v\" \"v4.4.0\" \"-o\" \"version.h\" \"lib\""
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -146,7 +146,7 @@ cd D:\Repos\A-Ray\third_party\ktx
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-C:\Windows\System32\bash.exe -c "\"scripts/mkversion\" \"-v\" \"v4.4.0\" \"-o\" \"version.h\" \"lib\""
+bash.exe -c "\"scripts/mkversion\" \"-v\" \"v4.4.0\" \"-o\" \"version.h\" \"lib\""
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -163,7 +163,7 @@ cd D:\Repos\A-Ray\third_party\ktx
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-C:\Windows\System32\bash.exe -c "\"scripts/mkversion\" \"-v\" \"v4.4.0\" \"-o\" \"version.h\" \"lib\""
+bash.exe -c "\"scripts/mkversion\" \"-v\" \"v4.4.0\" \"-o\" \"version.h\" \"lib\""
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone

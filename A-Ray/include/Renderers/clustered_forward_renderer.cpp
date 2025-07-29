@@ -464,7 +464,7 @@ void ClusteredForwardRenderer::InitComputePipelines()
 	VK_CHECK(vkCreatePipelineLayout(engine->_device, &cullLightsLayoutInfo, nullptr, &cull_lights_pso.layout));
 
 	VkShaderModule cullLightShader;
-	if (!vkutil::load_shader_module("shaders/cluster_cull_light_shader.spv", engine->_device, &cullLightShader)) {
+	if (!vkutil::load_shader_module("../../assets/shaders/cluster_cull_light_shader.spv", engine->_device, &cullLightShader)) {
 		std::print("Error when building the compute shader \n");
 	}
 
@@ -498,7 +498,7 @@ void ClusteredForwardRenderer::InitComputePipelines()
 	VK_CHECK(vkCreatePipelineLayout(engine->_device, &cullObjectsLayoutInfo, nullptr, &cull_objects_pso.layout));
 
 	VkShaderModule cullObjectsShader;
-	if (!vkutil::load_shader_module("shaders/indirect_cull.comp.spv", engine->_device, &cullObjectsShader)) {
+	if (!vkutil::load_shader_module("../../assets/shaders/indirect_cull.comp.spv", engine->_device, &cullObjectsShader)) {
 		std::print("Error when building the compute shader \n");
 	}
 
@@ -527,7 +527,7 @@ void ClusteredForwardRenderer::InitComputePipelines()
 	VK_CHECK(vkCreatePipelineLayout(engine->_device, &depthReduceLayoutInfo, nullptr, &depth_reduce_pso.layout));
 
 	VkShaderModule depthReduceShader;
-	if (!vkutil::load_shader_module("shaders/depth_reduce.comp.spv", engine->_device, &depthReduceShader)) {
+	if (!vkutil::load_shader_module("../../assets/shaders/depth_reduce.comp.spv", engine->_device, &depthReduceShader)) {
 		std::print("Error when building the compute shader \n");
 	}
 
@@ -560,7 +560,7 @@ void ClusteredForwardRenderer::InitComputePipelines()
 	VK_CHECK(vkCreatePipelineLayout(engine->_device, &down_sample_bloom_layout_info , nullptr, &downsample_bloom_pso.layout));
 
 	VkShaderModule downsample_shader;
-	if (!vkutil::load_shader_module("shaders/downsample.spv", engine->_device, &downsample_shader)) {
+	if (!vkutil::load_shader_module("../../assets/shaders/downsample.spv", engine->_device, &downsample_shader)) {
 		std::print("Error when building the compute shader \n");
 	}
 
@@ -593,7 +593,7 @@ void ClusteredForwardRenderer::InitComputePipelines()
 	VK_CHECK(vkCreatePipelineLayout(engine->_device, &upsample_layout_create_info, nullptr, &upsample_bloom_pso.layout));
 
 	VkShaderModule upsample_shader;
-	if (!vkutil::load_shader_module("shaders/upsample.spv", engine->_device, &upsample_shader)) {
+	if (!vkutil::load_shader_module("../../assets/shaders/upsample.spv", engine->_device, &upsample_shader)) {
 		std::print("Error when building the compute shader \n");
 	}
 
@@ -1037,17 +1037,17 @@ void ClusteredForwardRenderer::UpdateScene()
 void ClusteredForwardRenderer::LoadAssets()
 {
 	//Load in skyBox image
-	_skyImage = vkutil::load_cubemap_image("assets/textures/hdris/overcast.ktx", VkExtent3D{ 1,1,1 }, engine, VK_FORMAT_R16G16B16A16_SFLOAT, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_STORAGE_BIT, true);
+	_skyImage = vkutil::load_cubemap_image("../../assets/textures/hdris/overcast.ktx", VkExtent3D{ 1,1,1 }, engine, VK_FORMAT_R16G16B16A16_SFLOAT, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_STORAGE_BIT, true);
 
-	std::string structurePath{ "assets/sponza/sponza.gltf" };
+	std::string structurePath{ "../../assets/models/sponza/sponza.gltf" };
 	auto structureFile = resource_manager->loadGltf(engine, structurePath, true);
 	assert(structureFile.has_value());
 
-	std::string cubePath{ "assets/cube.gltf" };
+	std::string cubePath{ "../../assets/models/cube.gltf" };
 	auto cubeFile = resource_manager->loadGltf(engine, cubePath);
 	assert(cubeFile.has_value());
 
-	std::string planePath{ "assets/plane.glb" };
+	std::string planePath{ "../../assets/models/plane.glb" };
 	auto planeFile = resource_manager->loadGltf(engine, planePath);
 	assert(planeFile.has_value());
 
@@ -1127,7 +1127,7 @@ void ClusteredForwardRenderer::BuildClusters()
 	generate_clusters_pso.layout = buildClusterLayout;
 
 	VkShaderModule buildClusterShader;
-	if (!vkutil::load_shader_module("shaders/cluster_shader.spv", engine->_device, &buildClusterShader)) {
+	if (!vkutil::load_shader_module("../../assets/shaders/cluster_shader.spv", engine->_device, &buildClusterShader)) {
 		std::print("Error when building the compute shader \n");
 	}
 
@@ -1212,12 +1212,12 @@ void ClusteredForwardRenderer::GeneratePrefilteredCubemap()
 
 	//Pipeline setup
 	VkShaderModule preFilterVertexShader;
-	if (!vkutil::load_shader_module("shaders/filter_cube.vert.spv", engine->_device, &preFilterVertexShader)) {
+	if (!vkutil::load_shader_module("../../assets/shaders/filter_cube.vert.spv", engine->_device, &preFilterVertexShader)) {
 		std::print("Error when building the shadow vertex shader module\n");
 	}
 
 	VkShaderModule preFilterFragmentShader;
-	if (!vkutil::load_shader_module("shaders/pre_filter_envmap.frag.spv", engine->_device, &preFilterFragmentShader)) {
+	if (!vkutil::load_shader_module("../../assets/shaders/pre_filter_envmap.frag.spv", engine->_device, &preFilterFragmentShader)) {
 		std::print("Error when building the shadow fragment shader module\n");
 	}
 
@@ -1429,13 +1429,13 @@ void ClusteredForwardRenderer::GenerateIrradianceCube()
 
 	//Pipeline setup
 	VkShaderModule irradianceVertexShader;
-	if (!vkutil::load_shader_module("shaders/filter_cube.vert.spv", engine->_device, &irradianceVertexShader)) {
-		std::print("Error when building the shadow vertex shader module\n");
+	if (!vkutil::load_shader_module("../../assets/shaders/filter_cube.vert.spv", engine->_device, &irradianceVertexShader)) {
+		std::print("Error when building the Irradiance vertex shader module\n");
 	}
 
 	VkShaderModule irradianceFragmentShader;
-	if (!vkutil::load_shader_module("shaders/irradiance_cube.frag.spv", engine->_device, &irradianceFragmentShader)) {
-		std::print("Error when building the shadow fragment shader module\n");
+	if (!vkutil::load_shader_module("../../assets/shaders/irradiance_cube.frag.spv", engine->_device, &irradianceFragmentShader)) {
+		std::print("Error when building the Irradiance fragment shader module\n");
 	}
 
 	VkPushConstantRange matrixRange{};

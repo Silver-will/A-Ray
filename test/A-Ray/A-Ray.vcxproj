@@ -86,7 +86,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Repos\A-Ray\A-Ray\include;D:\Repos\A-Ray\A-Ray\src;D:\Repos\A-Ray\A-Ray;D:\Repos\A-Ray\third_party\vma\include;D:\Repos\A-Ray\third_party\vma\src;D:\Repos\A-Ray\third_party\glfw\include;D:\Repos\A-Ray\third_party\glm;D:\Repos\A-Ray\third_party\fastgltf\include;D:\Repos\A-Ray\third_party\imgui\include;D:\Repos\A-Ray\third_party\vk-bootstrap\src;D:\Repos\A-Ray\third_party\stb;D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\imgui;D:\Repos\A-Ray\third_party\fastgltf\deps\simdjson;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Repos\A-Ray\A-Ray\include;D:\Repos\A-Ray\A-Ray\src;D:\Repos\A-Ray\A-Ray;D:\Repos\A-Ray\third_party\vma\include;D:\Repos\A-Ray\third_party\vma;D:\Repos\A-Ray\third_party\vma\src;D:\Repos\A-Ray\third_party\glfw\include;D:\Repos\A-Ray\third_party\glm;D:\Repos\A-Ray\third_party\fastgltf\include;D:\Repos\A-Ray\third_party\imgui\include;D:\Repos\A-Ray\third_party\vk-bootstrap\src;D:\Repos\A-Ray\third_party\stb;D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\ktx\lib;D:\Repos\A-Ray\third_party\ktx\external;D:\Repos\A-Ray\third_party\tracy\public\tracy;D:\Repos\A-Ray\third_party\imgui;D:\Repos\A-Ray\third_party\fastgltf\deps\simdjson;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /external:I "C:/VulkanSDK/1.4.321.1/Include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -94,7 +94,7 @@
       <ExceptionHandling>Sync</ExceptionHandling>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <Optimization>Disabled</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -105,10 +105,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;FASTGLTF_USE_CUSTOM_SMALLVECTOR=0;FASTGLTF_ENABLE_DEPRECATED_EXT=0;FASTGLTF_DISABLE_CUSTOM_MEMORY_POOL=0;FASTGLTF_USE_64BIT_FLOAT=0;FASTGLTF_ENABLE_KHR_IMPLICIT_SHAPES=0;FASTGLTF_ENABLE_KHR_PHYSICS_RIGID_BODIES=0;DEBUG;KHRONOS_STATIC;BASISU_NO_ITERATOR_DEBUG_LEVEL;KTX_FEATURE_KTX1;KTX_FEATURE_KTX2;KTX_FEATURE_WRITE;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Repos\A-Ray\A-Ray\include;D:\Repos\A-Ray\A-Ray\src;D:\Repos\A-Ray\A-Ray;D:\Repos\A-Ray\third_party\vma\include;D:\Repos\A-Ray\third_party\vma\src;D:\Repos\A-Ray\third_party\glfw\include;D:\Repos\A-Ray\third_party\glm;D:\Repos\A-Ray\third_party\fastgltf\include;D:\Repos\A-Ray\third_party\imgui\include;D:\Repos\A-Ray\third_party\vk-bootstrap\src;D:\Repos\A-Ray\third_party\stb;D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\imgui;D:\Repos\A-Ray\third_party\fastgltf\deps\simdjson;C:\VulkanSDK\1.4.321.1\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Repos\A-Ray\A-Ray\include;D:\Repos\A-Ray\A-Ray\src;D:\Repos\A-Ray\A-Ray;D:\Repos\A-Ray\third_party\vma\include;D:\Repos\A-Ray\third_party\vma;D:\Repos\A-Ray\third_party\vma\src;D:\Repos\A-Ray\third_party\glfw\include;D:\Repos\A-Ray\third_party\glm;D:\Repos\A-Ray\third_party\fastgltf\include;D:\Repos\A-Ray\third_party\imgui\include;D:\Repos\A-Ray\third_party\vk-bootstrap\src;D:\Repos\A-Ray\third_party\stb;D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\ktx\lib;D:\Repos\A-Ray\third_party\ktx\external;D:\Repos\A-Ray\third_party\tracy\public\tracy;D:\Repos\A-Ray\third_party\imgui;D:\Repos\A-Ray\third_party\fastgltf\deps\simdjson;C:\VulkanSDK\1.4.321.1\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Repos\A-Ray\A-Ray\include;D:\Repos\A-Ray\A-Ray\src;D:\Repos\A-Ray\A-Ray;D:\Repos\A-Ray\third_party\vma\include;D:\Repos\A-Ray\third_party\vma\src;D:\Repos\A-Ray\third_party\glfw\include;D:\Repos\A-Ray\third_party\glm;D:\Repos\A-Ray\third_party\fastgltf\include;D:\Repos\A-Ray\third_party\imgui\include;D:\Repos\A-Ray\third_party\vk-bootstrap\src;D:\Repos\A-Ray\third_party\stb;D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\imgui;D:\Repos\A-Ray\third_party\fastgltf\deps\simdjson;C:\VulkanSDK\1.4.321.1\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Repos\A-Ray\A-Ray\include;D:\Repos\A-Ray\A-Ray\src;D:\Repos\A-Ray\A-Ray;D:\Repos\A-Ray\third_party\vma\include;D:\Repos\A-Ray\third_party\vma;D:\Repos\A-Ray\third_party\vma\src;D:\Repos\A-Ray\third_party\glfw\include;D:\Repos\A-Ray\third_party\glm;D:\Repos\A-Ray\third_party\fastgltf\include;D:\Repos\A-Ray\third_party\imgui\include;D:\Repos\A-Ray\third_party\vk-bootstrap\src;D:\Repos\A-Ray\third_party\stb;D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\ktx\lib;D:\Repos\A-Ray\third_party\ktx\external;D:\Repos\A-Ray\third_party\tracy\public\tracy;D:\Repos\A-Ray\third_party\imgui;D:\Repos\A-Ray\third_party\fastgltf\deps\simdjson;C:\VulkanSDK\1.4.321.1\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -116,7 +116,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\third_party\imgui\Debug\imgui.lib;..\third_party\fastgltf\Debug\fastgltf.lib;..\third_party\glfw\src\Debug\glfw3.lib;C:\VulkanSDK\1.4.321.1\Lib\vulkan-1.lib;..\third_party\vk-bootstrap\Debug\vk-bootstrap.lib;..\third_party\ktx\Debug\ktx.lib;..\third_party\ktx\external\astc-encoder\Source\Debug\astcenc-avx2-static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\third_party\imgui\Debug\imgui.lib;..\third_party\fastgltf\Debug\fastgltf.lib;..\third_party\glfw\src\Debug\glfw3.lib;C:\VulkanSDK\1.4.321.1\Lib\vulkan-1.lib;..\third_party\vk-bootstrap\Debug\vk-bootstrap.lib;..\third_party\ktx\Debug\ktx.lib;C:\VulkanSDK\1.4.321.1\Lib\vulkan-1.lib;..\third_party\ktx\external\astc-encoder\Source\Debug\astcenc-avx2-static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -131,13 +131,13 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Repos\A-Ray\A-Ray\include;D:\Repos\A-Ray\A-Ray\src;D:\Repos\A-Ray\A-Ray;D:\Repos\A-Ray\third_party\vma\include;D:\Repos\A-Ray\third_party\vma\src;D:\Repos\A-Ray\third_party\glfw\include;D:\Repos\A-Ray\third_party\glm;D:\Repos\A-Ray\third_party\fastgltf\include;D:\Repos\A-Ray\third_party\imgui\include;D:\Repos\A-Ray\third_party\vk-bootstrap\src;D:\Repos\A-Ray\third_party\stb;D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\imgui;D:\Repos\A-Ray\third_party\fastgltf\deps\simdjson;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Repos\A-Ray\A-Ray\include;D:\Repos\A-Ray\A-Ray\src;D:\Repos\A-Ray\A-Ray;D:\Repos\A-Ray\third_party\vma\include;D:\Repos\A-Ray\third_party\vma;D:\Repos\A-Ray\third_party\vma\src;D:\Repos\A-Ray\third_party\glfw\include;D:\Repos\A-Ray\third_party\glm;D:\Repos\A-Ray\third_party\fastgltf\include;D:\Repos\A-Ray\third_party\imgui\include;D:\Repos\A-Ray\third_party\vk-bootstrap\src;D:\Repos\A-Ray\third_party\stb;D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\ktx\lib;D:\Repos\A-Ray\third_party\ktx\external;D:\Repos\A-Ray\third_party\tracy\public\tracy;D:\Repos\A-Ray\third_party\imgui;D:\Repos\A-Ray\third_party\fastgltf\deps\simdjson;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /external:I "C:/VulkanSDK/1.4.321.1/Include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <Optimization>MaxSpeed</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -150,10 +150,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;FASTGLTF_USE_CUSTOM_SMALLVECTOR=0;FASTGLTF_ENABLE_DEPRECATED_EXT=0;FASTGLTF_DISABLE_CUSTOM_MEMORY_POOL=0;FASTGLTF_USE_64BIT_FLOAT=0;FASTGLTF_ENABLE_KHR_IMPLICIT_SHAPES=0;FASTGLTF_ENABLE_KHR_PHYSICS_RIGID_BODIES=0;KHRONOS_STATIC;BASISU_NO_ITERATOR_DEBUG_LEVEL;KTX_FEATURE_KTX1;KTX_FEATURE_KTX2;KTX_FEATURE_WRITE;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Repos\A-Ray\A-Ray\include;D:\Repos\A-Ray\A-Ray\src;D:\Repos\A-Ray\A-Ray;D:\Repos\A-Ray\third_party\vma\include;D:\Repos\A-Ray\third_party\vma\src;D:\Repos\A-Ray\third_party\glfw\include;D:\Repos\A-Ray\third_party\glm;D:\Repos\A-Ray\third_party\fastgltf\include;D:\Repos\A-Ray\third_party\imgui\include;D:\Repos\A-Ray\third_party\vk-bootstrap\src;D:\Repos\A-Ray\third_party\stb;D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\imgui;D:\Repos\A-Ray\third_party\fastgltf\deps\simdjson;C:\VulkanSDK\1.4.321.1\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Repos\A-Ray\A-Ray\include;D:\Repos\A-Ray\A-Ray\src;D:\Repos\A-Ray\A-Ray;D:\Repos\A-Ray\third_party\vma\include;D:\Repos\A-Ray\third_party\vma;D:\Repos\A-Ray\third_party\vma\src;D:\Repos\A-Ray\third_party\glfw\include;D:\Repos\A-Ray\third_party\glm;D:\Repos\A-Ray\third_party\fastgltf\include;D:\Repos\A-Ray\third_party\imgui\include;D:\Repos\A-Ray\third_party\vk-bootstrap\src;D:\Repos\A-Ray\third_party\stb;D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\ktx\lib;D:\Repos\A-Ray\third_party\ktx\external;D:\Repos\A-Ray\third_party\tracy\public\tracy;D:\Repos\A-Ray\third_party\imgui;D:\Repos\A-Ray\third_party\fastgltf\deps\simdjson;C:\VulkanSDK\1.4.321.1\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Repos\A-Ray\A-Ray\include;D:\Repos\A-Ray\A-Ray\src;D:\Repos\A-Ray\A-Ray;D:\Repos\A-Ray\third_party\vma\include;D:\Repos\A-Ray\third_party\vma\src;D:\Repos\A-Ray\third_party\glfw\include;D:\Repos\A-Ray\third_party\glm;D:\Repos\A-Ray\third_party\fastgltf\include;D:\Repos\A-Ray\third_party\imgui\include;D:\Repos\A-Ray\third_party\vk-bootstrap\src;D:\Repos\A-Ray\third_party\stb;D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\imgui;D:\Repos\A-Ray\third_party\fastgltf\deps\simdjson;C:\VulkanSDK\1.4.321.1\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Repos\A-Ray\A-Ray\include;D:\Repos\A-Ray\A-Ray\src;D:\Repos\A-Ray\A-Ray;D:\Repos\A-Ray\third_party\vma\include;D:\Repos\A-Ray\third_party\vma;D:\Repos\A-Ray\third_party\vma\src;D:\Repos\A-Ray\third_party\glfw\include;D:\Repos\A-Ray\third_party\glm;D:\Repos\A-Ray\third_party\fastgltf\include;D:\Repos\A-Ray\third_party\imgui\include;D:\Repos\A-Ray\third_party\vk-bootstrap\src;D:\Repos\A-Ray\third_party\stb;D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\ktx\lib;D:\Repos\A-Ray\third_party\ktx\external;D:\Repos\A-Ray\third_party\tracy\public\tracy;D:\Repos\A-Ray\third_party\imgui;D:\Repos\A-Ray\third_party\fastgltf\deps\simdjson;C:\VulkanSDK\1.4.321.1\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -161,7 +161,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\third_party\imgui\Release\imgui.lib;..\third_party\fastgltf\Release\fastgltf.lib;..\third_party\glfw\src\Release\glfw3.lib;C:\VulkanSDK\1.4.321.1\Lib\vulkan-1.lib;..\third_party\vk-bootstrap\Release\vk-bootstrap.lib;..\third_party\ktx\Release\ktx.lib;..\third_party\ktx\external\astc-encoder\Source\Release\astcenc-avx2-static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\third_party\imgui\Release\imgui.lib;..\third_party\fastgltf\Release\fastgltf.lib;..\third_party\glfw\src\Release\glfw3.lib;C:\VulkanSDK\1.4.321.1\Lib\vulkan-1.lib;..\third_party\vk-bootstrap\Release\vk-bootstrap.lib;..\third_party\ktx\Release\ktx.lib;C:\VulkanSDK\1.4.321.1\Lib\vulkan-1.lib;..\third_party\ktx\external\astc-encoder\Source\Release\astcenc-avx2-static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -176,13 +176,13 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Repos\A-Ray\A-Ray\include;D:\Repos\A-Ray\A-Ray\src;D:\Repos\A-Ray\A-Ray;D:\Repos\A-Ray\third_party\vma\include;D:\Repos\A-Ray\third_party\vma\src;D:\Repos\A-Ray\third_party\glfw\include;D:\Repos\A-Ray\third_party\glm;D:\Repos\A-Ray\third_party\fastgltf\include;D:\Repos\A-Ray\third_party\imgui\include;D:\Repos\A-Ray\third_party\vk-bootstrap\src;D:\Repos\A-Ray\third_party\stb;D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\imgui;D:\Repos\A-Ray\third_party\fastgltf\deps\simdjson;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Repos\A-Ray\A-Ray\include;D:\Repos\A-Ray\A-Ray\src;D:\Repos\A-Ray\A-Ray;D:\Repos\A-Ray\third_party\vma\include;D:\Repos\A-Ray\third_party\vma;D:\Repos\A-Ray\third_party\vma\src;D:\Repos\A-Ray\third_party\glfw\include;D:\Repos\A-Ray\third_party\glm;D:\Repos\A-Ray\third_party\fastgltf\include;D:\Repos\A-Ray\third_party\imgui\include;D:\Repos\A-Ray\third_party\vk-bootstrap\src;D:\Repos\A-Ray\third_party\stb;D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\ktx\lib;D:\Repos\A-Ray\third_party\ktx\external;D:\Repos\A-Ray\third_party\tracy\public\tracy;D:\Repos\A-Ray\third_party\imgui;D:\Repos\A-Ray\third_party\fastgltf\deps\simdjson;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /external:I "C:/VulkanSDK/1.4.321.1/Include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <Optimization>MinSpace</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -195,10 +195,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;FASTGLTF_USE_CUSTOM_SMALLVECTOR=0;FASTGLTF_ENABLE_DEPRECATED_EXT=0;FASTGLTF_DISABLE_CUSTOM_MEMORY_POOL=0;FASTGLTF_USE_64BIT_FLOAT=0;FASTGLTF_ENABLE_KHR_IMPLICIT_SHAPES=0;FASTGLTF_ENABLE_KHR_PHYSICS_RIGID_BODIES=0;KHRONOS_STATIC;BASISU_NO_ITERATOR_DEBUG_LEVEL;KTX_FEATURE_KTX1;KTX_FEATURE_KTX2;KTX_FEATURE_WRITE;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Repos\A-Ray\A-Ray\include;D:\Repos\A-Ray\A-Ray\src;D:\Repos\A-Ray\A-Ray;D:\Repos\A-Ray\third_party\vma\include;D:\Repos\A-Ray\third_party\vma\src;D:\Repos\A-Ray\third_party\glfw\include;D:\Repos\A-Ray\third_party\glm;D:\Repos\A-Ray\third_party\fastgltf\include;D:\Repos\A-Ray\third_party\imgui\include;D:\Repos\A-Ray\third_party\vk-bootstrap\src;D:\Repos\A-Ray\third_party\stb;D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\imgui;D:\Repos\A-Ray\third_party\fastgltf\deps\simdjson;C:\VulkanSDK\1.4.321.1\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Repos\A-Ray\A-Ray\include;D:\Repos\A-Ray\A-Ray\src;D:\Repos\A-Ray\A-Ray;D:\Repos\A-Ray\third_party\vma\include;D:\Repos\A-Ray\third_party\vma;D:\Repos\A-Ray\third_party\vma\src;D:\Repos\A-Ray\third_party\glfw\include;D:\Repos\A-Ray\third_party\glm;D:\Repos\A-Ray\third_party\fastgltf\include;D:\Repos\A-Ray\third_party\imgui\include;D:\Repos\A-Ray\third_party\vk-bootstrap\src;D:\Repos\A-Ray\third_party\stb;D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\ktx\lib;D:\Repos\A-Ray\third_party\ktx\external;D:\Repos\A-Ray\third_party\tracy\public\tracy;D:\Repos\A-Ray\third_party\imgui;D:\Repos\A-Ray\third_party\fastgltf\deps\simdjson;C:\VulkanSDK\1.4.321.1\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Repos\A-Ray\A-Ray\include;D:\Repos\A-Ray\A-Ray\src;D:\Repos\A-Ray\A-Ray;D:\Repos\A-Ray\third_party\vma\include;D:\Repos\A-Ray\third_party\vma\src;D:\Repos\A-Ray\third_party\glfw\include;D:\Repos\A-Ray\third_party\glm;D:\Repos\A-Ray\third_party\fastgltf\include;D:\Repos\A-Ray\third_party\imgui\include;D:\Repos\A-Ray\third_party\vk-bootstrap\src;D:\Repos\A-Ray\third_party\stb;D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\imgui;D:\Repos\A-Ray\third_party\fastgltf\deps\simdjson;C:\VulkanSDK\1.4.321.1\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Repos\A-Ray\A-Ray\include;D:\Repos\A-Ray\A-Ray\src;D:\Repos\A-Ray\A-Ray;D:\Repos\A-Ray\third_party\vma\include;D:\Repos\A-Ray\third_party\vma;D:\Repos\A-Ray\third_party\vma\src;D:\Repos\A-Ray\third_party\glfw\include;D:\Repos\A-Ray\third_party\glm;D:\Repos\A-Ray\third_party\fastgltf\include;D:\Repos\A-Ray\third_party\imgui\include;D:\Repos\A-Ray\third_party\vk-bootstrap\src;D:\Repos\A-Ray\third_party\stb;D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\ktx\lib;D:\Repos\A-Ray\third_party\ktx\external;D:\Repos\A-Ray\third_party\tracy\public\tracy;D:\Repos\A-Ray\third_party\imgui;D:\Repos\A-Ray\third_party\fastgltf\deps\simdjson;C:\VulkanSDK\1.4.321.1\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -206,7 +206,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\third_party\imgui\MinSizeRel\imgui.lib;..\third_party\fastgltf\MinSizeRel\fastgltf.lib;..\third_party\glfw\src\MinSizeRel\glfw3.lib;C:\VulkanSDK\1.4.321.1\Lib\vulkan-1.lib;..\third_party\vk-bootstrap\MinSizeRel\vk-bootstrap.lib;..\third_party\ktx\MinSizeRel\ktx.lib;..\third_party\ktx\external\astc-encoder\Source\MinSizeRel\astcenc-avx2-static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\third_party\imgui\MinSizeRel\imgui.lib;..\third_party\fastgltf\MinSizeRel\fastgltf.lib;..\third_party\glfw\src\MinSizeRel\glfw3.lib;C:\VulkanSDK\1.4.321.1\Lib\vulkan-1.lib;..\third_party\vk-bootstrap\MinSizeRel\vk-bootstrap.lib;..\third_party\ktx\MinSizeRel\ktx.lib;C:\VulkanSDK\1.4.321.1\Lib\vulkan-1.lib;..\third_party\ktx\external\astc-encoder\Source\MinSizeRel\astcenc-avx2-static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -221,14 +221,14 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Repos\A-Ray\A-Ray\include;D:\Repos\A-Ray\A-Ray\src;D:\Repos\A-Ray\A-Ray;D:\Repos\A-Ray\third_party\vma\include;D:\Repos\A-Ray\third_party\vma\src;D:\Repos\A-Ray\third_party\glfw\include;D:\Repos\A-Ray\third_party\glm;D:\Repos\A-Ray\third_party\fastgltf\include;D:\Repos\A-Ray\third_party\imgui\include;D:\Repos\A-Ray\third_party\vk-bootstrap\src;D:\Repos\A-Ray\third_party\stb;D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\imgui;D:\Repos\A-Ray\third_party\fastgltf\deps\simdjson;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Repos\A-Ray\A-Ray\include;D:\Repos\A-Ray\A-Ray\src;D:\Repos\A-Ray\A-Ray;D:\Repos\A-Ray\third_party\vma\include;D:\Repos\A-Ray\third_party\vma;D:\Repos\A-Ray\third_party\vma\src;D:\Repos\A-Ray\third_party\glfw\include;D:\Repos\A-Ray\third_party\glm;D:\Repos\A-Ray\third_party\fastgltf\include;D:\Repos\A-Ray\third_party\imgui\include;D:\Repos\A-Ray\third_party\vk-bootstrap\src;D:\Repos\A-Ray\third_party\stb;D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\ktx\lib;D:\Repos\A-Ray\third_party\ktx\external;D:\Repos\A-Ray\third_party\tracy\public\tracy;D:\Repos\A-Ray\third_party\imgui;D:\Repos\A-Ray\third_party\fastgltf\deps\simdjson;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /external:I "C:/VulkanSDK/1.4.321.1/Include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <Optimization>MaxSpeed</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -239,10 +239,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;FASTGLTF_USE_CUSTOM_SMALLVECTOR=0;FASTGLTF_ENABLE_DEPRECATED_EXT=0;FASTGLTF_DISABLE_CUSTOM_MEMORY_POOL=0;FASTGLTF_USE_64BIT_FLOAT=0;FASTGLTF_ENABLE_KHR_IMPLICIT_SHAPES=0;FASTGLTF_ENABLE_KHR_PHYSICS_RIGID_BODIES=0;KHRONOS_STATIC;BASISU_NO_ITERATOR_DEBUG_LEVEL;KTX_FEATURE_KTX1;KTX_FEATURE_KTX2;KTX_FEATURE_WRITE;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Repos\A-Ray\A-Ray\include;D:\Repos\A-Ray\A-Ray\src;D:\Repos\A-Ray\A-Ray;D:\Repos\A-Ray\third_party\vma\include;D:\Repos\A-Ray\third_party\vma\src;D:\Repos\A-Ray\third_party\glfw\include;D:\Repos\A-Ray\third_party\glm;D:\Repos\A-Ray\third_party\fastgltf\include;D:\Repos\A-Ray\third_party\imgui\include;D:\Repos\A-Ray\third_party\vk-bootstrap\src;D:\Repos\A-Ray\third_party\stb;D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\imgui;D:\Repos\A-Ray\third_party\fastgltf\deps\simdjson;C:\VulkanSDK\1.4.321.1\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Repos\A-Ray\A-Ray\include;D:\Repos\A-Ray\A-Ray\src;D:\Repos\A-Ray\A-Ray;D:\Repos\A-Ray\third_party\vma\include;D:\Repos\A-Ray\third_party\vma;D:\Repos\A-Ray\third_party\vma\src;D:\Repos\A-Ray\third_party\glfw\include;D:\Repos\A-Ray\third_party\glm;D:\Repos\A-Ray\third_party\fastgltf\include;D:\Repos\A-Ray\third_party\imgui\include;D:\Repos\A-Ray\third_party\vk-bootstrap\src;D:\Repos\A-Ray\third_party\stb;D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\ktx\lib;D:\Repos\A-Ray\third_party\ktx\external;D:\Repos\A-Ray\third_party\tracy\public\tracy;D:\Repos\A-Ray\third_party\imgui;D:\Repos\A-Ray\third_party\fastgltf\deps\simdjson;C:\VulkanSDK\1.4.321.1\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Repos\A-Ray\A-Ray\include;D:\Repos\A-Ray\A-Ray\src;D:\Repos\A-Ray\A-Ray;D:\Repos\A-Ray\third_party\vma\include;D:\Repos\A-Ray\third_party\vma\src;D:\Repos\A-Ray\third_party\glfw\include;D:\Repos\A-Ray\third_party\glm;D:\Repos\A-Ray\third_party\fastgltf\include;D:\Repos\A-Ray\third_party\imgui\include;D:\Repos\A-Ray\third_party\vk-bootstrap\src;D:\Repos\A-Ray\third_party\stb;D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\imgui;D:\Repos\A-Ray\third_party\fastgltf\deps\simdjson;C:\VulkanSDK\1.4.321.1\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Repos\A-Ray\A-Ray\include;D:\Repos\A-Ray\A-Ray\src;D:\Repos\A-Ray\A-Ray;D:\Repos\A-Ray\third_party\vma\include;D:\Repos\A-Ray\third_party\vma;D:\Repos\A-Ray\third_party\vma\src;D:\Repos\A-Ray\third_party\glfw\include;D:\Repos\A-Ray\third_party\glm;D:\Repos\A-Ray\third_party\fastgltf\include;D:\Repos\A-Ray\third_party\imgui\include;D:\Repos\A-Ray\third_party\vk-bootstrap\src;D:\Repos\A-Ray\third_party\stb;D:\Repos\A-Ray\third_party\ktx\include;D:\Repos\A-Ray\third_party\ktx\lib;D:\Repos\A-Ray\third_party\ktx\external;D:\Repos\A-Ray\third_party\tracy\public\tracy;D:\Repos\A-Ray\third_party\imgui;D:\Repos\A-Ray\third_party\fastgltf\deps\simdjson;C:\VulkanSDK\1.4.321.1\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -250,7 +250,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\third_party\imgui\RelWithDebInfo\imgui.lib;..\third_party\fastgltf\RelWithDebInfo\fastgltf.lib;..\third_party\glfw\src\RelWithDebInfo\glfw3.lib;C:\VulkanSDK\1.4.321.1\Lib\vulkan-1.lib;..\third_party\vk-bootstrap\RelWithDebInfo\vk-bootstrap.lib;..\third_party\ktx\RelWithDebInfo\ktx.lib;..\third_party\ktx\external\astc-encoder\Source\RelWithDebInfo\astcenc-avx2-static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\third_party\imgui\RelWithDebInfo\imgui.lib;..\third_party\fastgltf\RelWithDebInfo\fastgltf.lib;..\third_party\glfw\src\RelWithDebInfo\glfw3.lib;C:\VulkanSDK\1.4.321.1\Lib\vulkan-1.lib;..\third_party\vk-bootstrap\RelWithDebInfo\vk-bootstrap.lib;..\third_party\ktx\RelWithDebInfo\ktx.lib;C:\VulkanSDK\1.4.321.1\Lib\vulkan-1.lib;..\third_party\ktx\external\astc-encoder\Source\RelWithDebInfo\astcenc-avx2-static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -380,6 +380,12 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ProjectReference Include="D:\Repos\A-Ray\test\ZERO_CHECK.vcxproj">
       <Project>{AFCB1BA0-13D2-3A27-A426-9FECFC07ACA6}</Project>
       <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\Repos\A-Ray\test\assets.vcxproj">
+      <Project>{BF22ABA2-B571-3AE6-B643-C6358943CD7E}</Project>
+      <Name>assets</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>

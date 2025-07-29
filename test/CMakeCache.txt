@@ -68,9 +68,6 @@ ASTCENC_WERROR:BOOL=ON
 //Enable use of native x86 gathers
 ASTCENC_X86_GATHERS:BOOL=ON
 
-//Path to a program.
-BASH_EXECUTABLE:FILEPATH=C:/Windows/System32/bash.exe
-
 //Compile with OpenCL support so applications can choose to use
 // it.
 BASISU_SUPPORT_OPENCL:BOOL=OFF
@@ -404,47 +401,6 @@ FETCHCONTENT_QUIET:BOOL=ON
 //Enables UPDATE_DISCONNECTED behavior for all content population
 FETCHCONTENT_UPDATES_DISCONNECTED:BOOL=OFF
 
-//Value Computed by CMake
-FMT_BINARY_DIR:STATIC=D:/Repos/A-Ray/test/third_party/ktx/external/fmt
-
-//Generate the cuda-test target.
-FMT_CUDA_TEST:BOOL=OFF
-
-//Debug library postfix.
-FMT_DEBUG_POSTFIX:STRING=d
-
-//Generate the doc target.
-FMT_DOC:BOOL=OFF
-
-//Generate the fuzz target.
-FMT_FUZZ:BOOL=OFF
-
-//Installation directory for include files, a relative path that
-// will be joined with C:/Program Files (x86)/A-Ray or an absolute
-// path.
-FMT_INC_DIR:STRING=include
-
-//Value Computed by CMake
-FMT_IS_TOP_LEVEL:STATIC=OFF
-
-//Build a module instead of a traditional library.
-FMT_MODULE:BOOL=OFF
-
-//Include core requiring OS (Windows/Posix) 
-FMT_OS:BOOL=ON
-
-//Enable extra warnings and expensive tests.
-FMT_PEDANTIC:BOOL=OFF
-
-//Value Computed by CMake
-FMT_SOURCE_DIR:STATIC=D:/Repos/A-Ray/third_party/ktx/external/fmt
-
-//Generate the test target.
-FMT_TEST:BOOL=OFF
-
-//Halt the compilation with an error on compiler warnings.
-FMT_WERROR:BOOL=OFF
-
 //Path to a program.
 GITCOMMAND:FILEPATH=D:/Git/cmd/git.exe
 
@@ -558,7 +514,7 @@ KTX_FEATURE_DOC:BOOL=OFF
 KTX_FEATURE_ETC_UNPACK:BOOL=ON
 
 //Enable OpenGL texture upload.
-KTX_FEATURE_GL_UPLOAD:BOOL=ON
+KTX_FEATURE_GL_UPLOAD:BOOL=OFF
 
 //Create Java bindings for libktx.
 KTX_FEATURE_JNI:BOOL=OFF
@@ -569,13 +525,19 @@ KTX_FEATURE_KTX1:BOOL=ON
 //Enable KTX 2 support.
 KTX_FEATURE_KTX2:BOOL=ON
 
-KTX_FEATURE_LOADTEST_APPS:BOOL=OFF
+//Load test apps test the upload feature by displaying various
+// KTX textures. Select which to create. "OpenGL" includes OpenGL
+// ES.
+KTX_FEATURE_LOADTEST_APPS:STRING=
 
 //Create Python source distribution.
 KTX_FEATURE_PY:BOOL=OFF
 
+//Create static libraries (shared otherwise).
+KTX_FEATURE_STATIC_LIBRARY:BOOL=ON
+
 //Create unit tests.
-KTX_FEATURE_TESTS:BOOL=ON
+KTX_FEATURE_TESTS:BOOL=OFF
 
 //Create KTX tools
 KTX_FEATURE_TOOLS:BOOL=OFF
@@ -595,6 +557,9 @@ KTX_WERROR:BOOL=OFF
 
 //Command to build the project
 MAKECOMMAND:STRING="C:\Program Files\CMake\bin\cmake.exe" --build . --config "${CTEST_CONFIGURATION_TYPE}"
+
+//Support KTX
+MATCH_SUPPORT_KTX:BOOL=ON
 
 //Path to the memory checking command, used for memory error detection.
 MEMORYCHECK_COMMAND:FILEPATH=MEMORYCHECK_COMMAND-NOTFOUND
@@ -819,8 +784,6 @@ simdjson_DIR:PATH=simdjson_DIR-NOTFOUND
 
 //Enable astcenc builds for decompression only
 ASTCENC_DECOMPRESSOR:INTERNAL=OFF
-//ADVANCED property for variable: BASH_EXECUTABLE
-BASH_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_AR
 CMAKE_AR-ADVANCED:INTERNAL=1
 //This is the directory where this CMakeCache.txt was created
@@ -941,7 +904,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MT
 CMAKE_MT-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=23
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=18
 //Platform information initialized
 CMAKE_PLATFORM_INFO_INITIALIZED:INTERNAL=1
 //noop for ranlib
@@ -1006,7 +969,7 @@ DART_TESTING_TIMEOUT-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: DOXYGEN_EXECUTABLE
 DOXYGEN_EXECUTABLE-ADVANCED:INTERNAL=1
 //Details about finding Bash
-FIND_PACKAGE_MESSAGE_DETAILS_Bash:INTERNAL=[C:/Windows/System32/bash.exe][v()]
+FIND_PACKAGE_MESSAGE_DETAILS_Bash:INTERNAL=[bash.exe][v()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //Details about finding Vulkan

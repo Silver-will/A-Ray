@@ -96,3 +96,6 @@ target_link_libraries(${PROJECT_NAME}
     ktx
 )
 
+add_custom_target(assets COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_LIST_DIR}/assets.cmake)
+
+add_dependencies(${PROJECT_NAME} assets)

@@ -79,12 +79,6 @@
     <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\external\etcdec\etcdec.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\gl_funcs.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\glloader.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="D:\Repos\A-Ray\third_party\ktx\lib\texture1.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -235,12 +229,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\vkformat_enum.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\gl_funclist.inl">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\gl_funcs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="D:\Repos\A-Ray\third_party\ktx\lib\texture1.h">

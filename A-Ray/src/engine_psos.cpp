@@ -9,17 +9,17 @@
 void ShadowPipelineResources::build_pipelines(VulkanEngine* engine, PipelineCreationInfo& info)
 {
 	VkShaderModule shadowVertexShader;
-	if (!vkutil::load_shader_module("shaders/cascaded_shadows.vert.spv", engine->_device, &shadowVertexShader)) {
+	if (!vkutil::load_shader_module("../../assets/shaders/cascaded_shadows.vert.spv", engine->_device, &shadowVertexShader)) {
 		std::print("Error when building the shadow vertex shader module\n");
 	}
 
 	VkShaderModule shadowFragmentShader;
-	if (!vkutil::load_shader_module("shaders/cascaded_shadows.frag.spv", engine->_device, &shadowFragmentShader)) {
+	if (!vkutil::load_shader_module("../../assets/shaders/cascaded_shadows.frag.spv", engine->_device, &shadowFragmentShader)) {
 		std::print("Error when building the shadow fragment shader module\n");
 	}
 
 	VkShaderModule shadowGeometryShader;
-	if (!vkutil::load_shader_module("shaders/cascaded_shadows.geom.spv", engine->_device, &shadowGeometryShader)) {
+	if (!vkutil::load_shader_module("../../assets/shaders/cascaded_shadows.geom.spv", engine->_device, &shadowGeometryShader)) {
 		std::print("Error when building the shadow geometry shader module\n");
 	}
 
@@ -96,12 +96,12 @@ void ShadowPipelineResources::clear_resources(VkDevice device)
 void SkyBoxPipelineResources::build_pipelines(VulkanEngine* engine, PipelineCreationInfo& info)
 {
 	VkShaderModule skyVertexShader;
-	if (!vkutil::load_shader_module("shaders/skybox.vert.spv", engine->_device, &skyVertexShader)) {
+	if (!vkutil::load_shader_module("../../assets/shaders/skybox.vert.spv", engine->_device, &skyVertexShader)) {
 		std::print("Error when building the shadow vertex shader module\n");
 	}
 
 	VkShaderModule skyFragmentShader;
-	if (!vkutil::load_shader_module("shaders/skybox.frag.spv", engine->_device, &skyFragmentShader)) {
+	if (!vkutil::load_shader_module("../../assets/shaders/skybox.frag.spv", engine->_device, &skyFragmentShader)) {
 		std::print("Error when building the shadow fragment shader module\n");
 	}
 
@@ -175,12 +175,12 @@ MaterialInstance BloomBlurPipelineObject::write_material(VkDevice device, vkutil
 void RenderImagePipelineObject::build_pipelines(VulkanEngine* engine, PipelineCreationInfo& info)
 {
 	VkShaderModule HDRVertexShader;
-	if (!vkutil::load_shader_module("shaders/hdr.vert.spv", engine->_device, &HDRVertexShader)) {
+	if (!vkutil::load_shader_module("../../assets/shaders/hdr.vert.spv", engine->_device, &HDRVertexShader)) {
 		std::print("Error when building the shadow vertex shader module\n");
 	}
 
 	VkShaderModule HDRFragmentShader;
-	if (!vkutil::load_shader_module("shaders/hdr.frag.spv", engine->_device, &HDRFragmentShader)) {
+	if (!vkutil::load_shader_module("../../assets/shaders/hdr.frag.spv", engine->_device, &HDRFragmentShader)) {
 		std::print("Error when building the shadow fragment shader module\n");
 	}
 
@@ -231,12 +231,12 @@ void RenderImagePipelineObject::clear_resources(VkDevice device)
 void UpsamplePipelineObject::build_pipelines(VulkanEngine* engine, PipelineCreationInfo& info)
 {
 	VkShaderModule HDRVertexShader;
-	if (!vkutil::load_shader_module("shaders/bloom.vert.spv", engine->_device, &HDRVertexShader)) {
+	if (!vkutil::load_shader_module("../../assets/shaders/bloom.vert.spv", engine->_device, &HDRVertexShader)) {
 		std::print("Error when building the shadow vertex shader module\n");
 	}
 
 	VkShaderModule UpsampleFrag;
-	if (!vkutil::load_shader_module("shaders/upsample.frag.spv", engine->_device, &UpsampleFrag)) {
+	if (!vkutil::load_shader_module("../../assets/shaders/upsample.frag.spv", engine->_device, &UpsampleFrag)) {
 		std::print("Error when building the shadow fragment shader module\n");
 	}
 
@@ -296,12 +296,12 @@ void UpsamplePipelineObject::clear_resources(VkDevice device)
 void EarlyDepthPipelineObject::build_pipelines(VulkanEngine* engine, PipelineCreationInfo& info)
 {
 	VkShaderModule depthVertexShader;
-	if (!vkutil::load_shader_module("shaders/depth_pass.vert.spv", engine->_device, &depthVertexShader)) {
+	if (!vkutil::load_shader_module("../../assets/shaders/depth_pass.vert.spv", engine->_device, &depthVertexShader)) {
 		std::print("Error when building the shadow vertex shader module\n");
 	}
 
 	VkShaderModule depthFragmentShader;
-	if (!vkutil::load_shader_module("shaders/cascaded_shadows.frag.spv", engine->_device, &depthFragmentShader)) {
+	if (!vkutil::load_shader_module("../../assets/shaders/cascaded_shadows.frag.spv", engine->_device, &depthFragmentShader)) {
 		std::print("Error when building the shadow fragment shader module\n");
 	}
 

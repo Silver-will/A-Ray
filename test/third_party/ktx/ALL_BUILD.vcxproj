@@ -177,14 +177,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{BE3C9628-41E3-37DB-8D18-526221308D4E}</Project>
       <Name>astcenc-avx2-static</Name>
     </ProjectReference>
-    <ProjectReference Include="D:\Repos\A-Ray\test\third_party\ktx\external\fmt\fmt.vcxproj">
-      <Project>{8774C776-D176-3E68-81AE-26EB25FE5140}</Project>
-      <Name>fmt</Name>
-    </ProjectReference>
-    <ProjectReference Include="D:\Repos\A-Ray\test\third_party\ktx\tests\gtest\gtest.vcxproj">
-      <Project>{A61DCAF4-FFF0-36F6-A805-A720D3F57CB1}</Project>
-      <Name>gtest</Name>
-    </ProjectReference>
     <ProjectReference Include="D:\Repos\A-Ray\test\third_party\ktx\ktx.vcxproj">
       <Project>{8FC0AED8-CEDC-3694-98F4-791569DCD655}</Project>
       <Name>ktx</Name>
@@ -193,10 +185,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{B6BAA8D1-53BE-3E27-B0BA-2DE2202EA393}</Project>
       <Name>ktx_read</Name>
     </ProjectReference>
-    <ProjectReference Include="D:\Repos\A-Ray\test\third_party\ktx\tests\ktxdiff\ktxdiff.vcxproj">
-      <Project>{75725CD0-F607-39F8-8B1B-EF885FAA5862}</Project>
-      <Name>ktxdiff</Name>
-    </ProjectReference>
     <ProjectReference Include="D:\Repos\A-Ray\test\third_party\ktx\objUtil.vcxproj">
       <Project>{521FBB70-5B8C-3A91-8EC0-5651AEC9B96C}</Project>
       <Name>objUtil</Name>
@@ -204,28 +192,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ProjectReference Include="D:\Repos\A-Ray\test\third_party\ktx\interface\basisu_c_binding\obj_basisu_cbind.vcxproj">
       <Project>{AEF90912-7FC5-3FD5-A593-135B33C67BF8}</Project>
       <Name>obj_basisu_cbind</Name>
-    </ProjectReference>
-    <ProjectReference Include="D:\Repos\A-Ray\test\third_party\ktx\tests\transcodetests\obj_tmp_basisu.vcxproj">
-      <Project>{4BDAC5C3-8793-36DA-9BCB-4ACE5D622621}</Project>
-      <Name>obj_tmp_basisu</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </ProjectReference>
-    <ProjectReference Include="D:\Repos\A-Ray\test\third_party\ktx\tests\streamtests\streamtests.vcxproj">
-      <Project>{FAAADFBB-370F-3DE4-BE76-84173061B37D}</Project>
-      <Name>streamtests</Name>
-    </ProjectReference>
-    <ProjectReference Include="D:\Repos\A-Ray\test\third_party\ktx\tests\texturetests.vcxproj">
-      <Project>{BE0CE3BB-ED16-3693-9AC9-2B5DD85F56E3}</Project>
-      <Name>texturetests</Name>
-    </ProjectReference>
-    <ProjectReference Include="D:\Repos\A-Ray\test\third_party\ktx\tests\transcodetests\transcodetests.vcxproj">
-      <Project>{44EF7FC1-A9B0-3177-9E87-D7596D0667DD}</Project>
-      <Name>transcodetests</Name>
-    </ProjectReference>
-    <ProjectReference Include="D:\Repos\A-Ray\test\third_party\ktx\tests\unittests.vcxproj">
-      <Project>{6CCD6513-FD6C-3CE0-85F5-341A1A165307}</Project>
-      <Name>unittests</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

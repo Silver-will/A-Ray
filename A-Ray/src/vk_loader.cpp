@@ -11,19 +11,24 @@
 #include <glm/gtx/quaternion.hpp>
 #include <iostream>
 #include <string>
-
+#include <filesystem>
+#include <iostream>
 void GLTFMetallic_Roughness::build_pipelines(VulkanEngine* engine, PipelineCreationInfo& info)
 {
     VkShaderModule meshFragShader;
-    if (!vkutil::load_shader_module("shaders/indirect_forward.frag.spv", engine->_device, &meshFragShader)) {
-        std::println("Error when building the triangle fragment shader module");
+    if (!vkutil::load_shader_module("../../assets/shaders/indirect_forward.frag.spv", engine->_device, &meshFragShader)) {
+        std::println("Error when building the forward fragment shader module");
     }
 
+    auto value = std::filesystem::current_path();
+    std::cout << value << std::endl;
+    //std::println(std::filesystem::current_path().c_str());
     VkShaderModule meshVertexShader;
-    if (!vkutil::load_shader_module("shaders/indirect_forward.vert.spv", engine->_device, &meshVertexShader)) {
-        std::println("Error when building the triangle vertex shader module");
+    if (!vkutil::load_shader_module("../../assets/shaders/indirect_forward.vert.spv", engine->_device, &meshVertexShader)) {
+        std::println("Error when building the forward vertex shader module");
     }
 
+    
     VkPushConstantRange matrixRange{};
     matrixRange.offset = 0;
     matrixRange.size = sizeof(GPUDrawPushConstants);

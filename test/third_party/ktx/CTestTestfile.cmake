@@ -6,5 +6,4 @@
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("interface/basisu_c_binding")
 subdirs("external/astc-encoder")
-subdirs("external/fmt")
 subdirs("tests")
