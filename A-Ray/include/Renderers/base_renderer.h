@@ -13,6 +13,9 @@
 #include "../resource_manager.h"
 #include "../scene_manager.h"
 
+
+constexpr unsigned int FRAME_OVERLAP = 2;
+
 struct BaseRenderer
 {
 	virtual void Init(VulkanEngine* engine)=0;

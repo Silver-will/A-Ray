@@ -40,6 +40,97 @@ struct GroundTruthRenderer : public BaseRenderer
 	static void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 	static void CursorCallback(GLFWwindow* window, double xpos, double ypos);
 	static void FramebufferResizeCallback(GLFWwindow* window, int width, int height);
+
+private:
+
+
+	Camera main_camera;
+	std::shared_ptr<ResourceManager> resource_manager;
+	std::shared_ptr<SceneManager> scene_manager;
+
+	VkSwapchainKHR swapchain;
+	VkFormat swapchain_image_format;
+	std::vector<VkImage> swapchain_images;
+	std::vector<VkImageView> swapchain_image_views;
+	VkExtent2D _swapchainExtent;
+
+	MaterialInstance defaultData;
+	GLTFMetallic_Roughness metalRoughMaterial;
+	EarlyDepthPipelineObject depthPrePassPSO;
+
+	DescriptorAllocator globalDescriptorAllocator;
+	VkDescriptorSet _drawImageDescriptors;
+
+	std::vector<vkutil::MaterialPass> forward_passes;
+
+	BlackKey::FrameData _frames[FRAME_OVERLAP];
+	BlackKey::FrameData& get_current_frame() { return _frames[_frameNumber % FRAME_OVERLAP]; };
+
+
+	bool resize_requested = false;
+	bool _isInitialized{ false };
+	int _frameNumber{ 0 };
+	bool stop_rendering{ false };
+	bool use_bindless = true;
+	bool debugBuffer = false;
+	bool readDebugBuffer = false;
+
+	struct {
+		float lastFrame;
+	} delta;
+	VkExtent2D _windowExtent{ 1920,1080 };
+	float bloom_filter_radius = 0.005f;
+	float bloom_strength = 0.08f;
+	float _aspect_width = 1920;
+	float _aspect_height = 1080;
+
+	DeletionQueue _mainDeletionQueue;
+	AllocatedImage _drawImage;
+	AllocatedImage _depthImage;
+	AllocatedImage _depthPyramid;
+	std::vector<BlackKey::BloomMip> bloom_mip_maps;
+	uint32_t mip_chain_length = 5;
+
+	IBLData IBL;
+	int draw_count = 0;
+
+	VkExtent2D _drawExtent;
+	float render_scale = 1.f;
+
+	VkPipeline gradient_pipeline;
+	VkPipelineLayout gradient_pipeline_layout;
+
+	PipelineStateObject downsample_bloom_pso;
+	PipelineStateObject upsample_bloom_pso;
+
+	GPUSceneData scene_data;
+
+	AllocatedImage _whiteImage;
+	AllocatedImage _blackImage;
+	AllocatedImage _greyImage;
+	AllocatedImage storageImage;
+	AllocatedImage errorCheckerboardImage;
+
+	AllocatedImage _skyImage;
+	ktxVulkanTexture _skyBoxImage;
+
+	VkSampler defaultSamplerLinear;
+	VkSampler defaultSamplerNearest;
+	VkSampler cubeMapSampler;
+
+	EngineStats stats;
+	std::vector<VkBufferMemoryBarrier> cullBarriers;
+
+	//lights
+	DirectionalLight directLight;
+	uint32_t maxLights = 100;
+
+	struct PointLightData {
+
+		uint32_t numOfLights = 6;
+		std::vector<PointLight> pointLights;
+
+	}pointData;
 };
 
 #endif

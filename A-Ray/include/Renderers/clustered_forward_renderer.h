@@ -2,8 +2,6 @@
 #include "base_renderer.h"
 #include <memory>
 
-constexpr unsigned int FRAME_OVERLAP = 2;
-
 struct ClusteredForwardRenderer : BaseRenderer
 {
 	void Init(VulkanEngine* engine) override;
@@ -146,9 +144,6 @@ private:
 	PipelineStateObject depth_reduce_pso;
 	PipelineStateObject downsample_bloom_pso;
 	PipelineStateObject upsample_bloom_pso;
-
-	GPUMeshBuffers rectangle;
-	std::vector<std::shared_ptr<MeshAsset>> testMeshes;
 
 	GPUSceneData scene_data;
 	shadowData shadow_data;
