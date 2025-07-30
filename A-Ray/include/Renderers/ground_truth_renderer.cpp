@@ -152,14 +152,8 @@ void GroundTruthRenderer::InitRenderTargets()
 	VkImageUsageFlags drawImageUsages{};
 	drawImageUsages |= VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;
 	drawImageUsages |= VK_IMAGE_USAGE_SAMPLED_BIT;
-	drawImageUsages |= VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;
-
-	VkImageUsageFlags resolveImageUsages{};
-	resolveImageUsages |= VK_IMAGE_USAGE_TRANSFER_SRC_BIT;
-	resolveImageUsages |= VK_IMAGE_USAGE_TRANSFER_DST_BIT;
-	resolveImageUsages |= VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;
-	resolveImageUsages |= VK_IMAGE_USAGE_SAMPLED_BIT;
-
+	drawImageUsages |= VK_IMAGE_USAGE_STORAGE_BIT;
+	drawImageUsages |= VK_IMAGE_USAGE_TRANSFER_SRC_BIT;
 
 	VkImageCreateInfo rimg_info = vkinit::image_create_info(_drawImage.imageFormat, drawImageUsages, drawImageExtent, 1);
 
@@ -321,11 +315,11 @@ void GroundTruthRenderer::InitComputePipelines()
 
 	VkPushConstantRange push_constant{};
 	push_constant.offset = 0;
-	push_constant.size = sizeof(CullData);
+	push_constant.size = sizeof(TraceParams);
 	push_constant.stageFlags = VK_SHADER_STAGE_COMPUTE_BIT;
 
-	trace_rays_rays_layout_info.pPushConstantRanges = &push_constant;
-	trace_rays_rays_layout_info.pushConstantRangeCount = 1;
+	trace_rays_rays_layout_info.pPushConstantRanges = nullptr;
+	trace_rays_rays_layout_info.pushConstantRangeCount = 0;
 
 
 	VK_CHECK(vkCreatePipelineLayout(engine->_device, &trace_rays_rays_layout_info, nullptr, &trace_rays_pso.layout));
@@ -629,6 +623,7 @@ void GroundTruthRenderer::UpdateScene()
 
 void GroundTruthRenderer::LoadAssets()
 {
+	/*
 	//Load in skyBox image
 	_skyImage = vkutil::load_cubemap_image("../../assets/textures/hdris/overcast.ktx", VkExtent3D{ 1,1,1 }, engine, VK_FORMAT_R16G16B16A16_SFLOAT, VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_STORAGE_BIT, true);
 
@@ -644,7 +639,7 @@ void GroundTruthRenderer::LoadAssets()
 	auto planeFile = resource_manager->loadGltf(engine, planePath);
 	assert(planeFile.has_value());
 
-	loadedScenes["sponza"] = *structureFile;
+	//loadedScenes["sponza"] = *structureFile;
 	loadedScenes["cube"] = *cubeFile;
 	loadedScenes["plane"] = *planeFile;
 
@@ -656,6 +651,7 @@ void GroundTruthRenderer::LoadAssets()
 	scene_manager->PrepareIndirectBuffers();
 	scene_manager->BuildBatches();
 	resource_manager->write_material_array();
+	*/
 }
 
 void GroundTruthRenderer::Cleanup()
@@ -678,6 +674,14 @@ void GroundTruthRenderer::Cleanup()
 void GroundTruthRenderer::Trace(VkCommandBuffer cmd)
 {
 
+	VkDescriptorSet trace_descriptor = get_current_frame()._frameDescriptors.allocate(engine->_device, trace_descriptor_layout);
+	DescriptorWriter writer;
+	writer.write_image(0,_drawImage.imageView,defaultSamplerLinear, VK_IMAGE_LAYOUT_GENERAL, VK_DESCRIPTOR_TYPE_STORAGE_IMAGE);
+	writer.update_set(engine->_device, trace_descriptor);
+
+	vkCmdBindPipeline(cmd, VK_PIPELINE_BIND_POINT_COMPUTE, trace_rays_pso.pipeline);
+	vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_COMPUTE, trace_rays_pso.layout, 0, 1, &trace_descriptor, 0, nullptr);
+	vkCmdDispatch(cmd, (uint32_t)_windowExtent.width / 16, (uint32_t)_windowExtent.height / 16, 1);
 }
 
 void GroundTruthRenderer::Draw()
@@ -726,10 +730,12 @@ void GroundTruthRenderer::Draw()
 	vkutil::transition_image(cmd, _drawImage.image, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL);
 
 	DrawBackground(cmd);
+
+	vkutil::transition_image(cmd, _drawImage.image, VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL, VK_IMAGE_LAYOUT_GENERAL);
 	Trace(cmd);
 	DrawPostProcess(cmd);
 
-	//vkutil::transition_image(cmd, _resolveImage.image, VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL);
+	vkutil::transition_image(cmd, _drawImage.image, VK_IMAGE_LAYOUT_GENERAL, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL);
 	vkutil::transition_image(cmd, swapchain_images[swapchainImageIndex], VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);
 
 	//< draw_first
@@ -938,13 +944,13 @@ void GroundTruthRenderer::ResizeSwapchain()
 
 	DestroySwapchain();
 
-	int w, h;
-	glfwGetWindowSize(engine->window, &w, &h);
-	_windowExtent.width = w;
-	_windowExtent.height = h;
+	int width, height;
+	glfwGetWindowSize(engine->window, &width, &height);
+	_windowExtent.width = width;
+	_windowExtent.height = height;
 
-	_aspect_width = w;
-	_aspect_height = h;
+	_aspect_width = width;
+	_aspect_height = height;
 
 	CreateSwapchain(_windowExtent.width, _windowExtent.height);
 
@@ -952,11 +958,13 @@ void GroundTruthRenderer::ResizeSwapchain()
 	resource_manager->DestroyImage(_drawImage);
 
 	VkExtent3D ImageExtent{
-		_aspect_width,
-		_aspect_height,
+		width,
+		height,
 		1
 	};
-	_drawImage = vkutil::create_image_empty(ImageExtent, VK_FORMAT_R16G16B16A16_SFLOAT, VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT | VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT, engine, VK_IMAGE_VIEW_TYPE_2D, false, 1, VK_SAMPLE_COUNT_4_BIT);
+	_drawImage = vkutil::create_image_empty(ImageExtent, VK_FORMAT_R16G16B16A16_SFLOAT, VK_IMAGE_USAGE_TRANSFER_SRC_BIT |
+				VK_IMAGE_USAGE_STORAGE_BIT | VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT, 
+				engine, VK_IMAGE_VIEW_TYPE_2D, false, 1);
 	resize_requested = false;
 }
 
@@ -1098,7 +1106,6 @@ void GroundTruthRenderer::DrawUI()
 		ImGui::SeparatorText("Render timings");
 		ImGui::Text("FPS %f ", 1000.0f / stats.frametime);
 		ImGui::Text("frametime %f ms", stats.frametime);
-		ImGui::Text("drawtime %f ms", stats.mesh_draw_time);
 		ImGui::Text("Triangles: %i", stats.triangle_count);
 		ImGui::Text("Indirect Draws: %i", stats.drawcall_count);
 		ImGui::Text("UI render time %f ms", stats.ui_draw_time);
@@ -1107,61 +1114,4 @@ void GroundTruthRenderer::DrawUI()
 		ImGui::Text("Number of active point light %i", static_cast<int>(pointData.pointLights.size()));
 	}
 	ImGui::End();
-}
-
-
-void SetImguiTheme(float alpha)
-{
-	ImGuiStyle& style = ImGui::GetStyle();
-
-	// light style from Pacôme Danhiez (user itamago) https://github.com/ocornut/imgui/pull/511#issuecomment-175719267
-	style.Alpha = 1.0f;
-	style.FrameRounding = 3.0f;
-	style.Colors[ImGuiCol_Text] = ImVec4(0.00f, 0.00f, 0.00f, 1.00f);
-	style.Colors[ImGuiCol_TextDisabled] = ImVec4(0.60f, 0.60f, 0.60f, 1.00f);
-	style.Colors[ImGuiCol_WindowBg] = ImVec4(0.94f, 0.94f, 0.94f, 0.94f);
-	style.Colors[ImGuiCol_PopupBg] = ImVec4(1.00f, 1.00f, 1.00f, 0.94f);
-	style.Colors[ImGuiCol_Border] = ImVec4(0.00f, 0.00f, 0.00f, 0.39f);
-	style.Colors[ImGuiCol_BorderShadow] = ImVec4(1.00f, 1.00f, 1.00f, 0.10f);
-	style.Colors[ImGuiCol_FrameBg] = ImVec4(1.00f, 1.00f, 1.00f, 0.94f);
-	style.Colors[ImGuiCol_FrameBgHovered] = ImVec4(0.26f, 0.2f, 0.2f, 0.40f);
-	style.Colors[ImGuiCol_FrameBgActive] = ImVec4(0.26f, 0.59f, 0.98f, 0.67f);
-	style.Colors[ImGuiCol_TitleBg] = ImVec4(0.96f, 0.96f, 0.96f, 1.00f);
-	style.Colors[ImGuiCol_TitleBgCollapsed] = ImVec4(1.00f, 1.00f, 1.00f, 0.51f);
-	style.Colors[ImGuiCol_TitleBgActive] = ImVec4(0.82f, 0.82f, 0.82f, 1.00f);
-	style.Colors[ImGuiCol_MenuBarBg] = ImVec4(0.86f, 0.86f, 0.86f, 1.00f);
-	style.Colors[ImGuiCol_ScrollbarBg] = ImVec4(0.98f, 0.98f, 0.98f, 0.53f);
-	style.Colors[ImGuiCol_ScrollbarGrab] = ImVec4(0.69f, 0.69f, 0.69f, 1.00f);
-	style.Colors[ImGuiCol_ScrollbarGrabHovered] = ImVec4(0.59f, 0.59f, 0.59f, 1.00f);
-	style.Colors[ImGuiCol_ScrollbarGrabActive] = ImVec4(0.49f, 0.49f, 0.49f, 1.00f);
-	style.Colors[ImGuiCol_CheckMark] = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
-	style.Colors[ImGuiCol_SliderGrab] = ImVec4(0.24f, 0.52f, 0.88f, 1.00f);
-	style.Colors[ImGuiCol_SliderGrabActive] = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
-	style.Colors[ImGuiCol_Button] = ImVec4(0.26f, 0.59f, 0.98f, 0.40f);
-	style.Colors[ImGuiCol_ButtonHovered] = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
-	style.Colors[ImGuiCol_ButtonActive] = ImVec4(0.06f, 0.53f, 0.98f, 1.00f);
-	style.Colors[ImGuiCol_Header] = ImVec4(0.26f, 0.59f, 0.98f, 0.31f);
-	style.Colors[ImGuiCol_HeaderHovered] = ImVec4(0.26f, 0.59f, 0.98f, 0.80f);
-	style.Colors[ImGuiCol_HeaderActive] = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
-	style.Colors[ImGuiCol_ResizeGrip] = ImVec4(1.00f, 1.00f, 1.00f, 0.50f);
-	style.Colors[ImGuiCol_ResizeGripHovered] = ImVec4(0.26f, 0.59f, 0.98f, 0.67f);
-	style.Colors[ImGuiCol_ResizeGripActive] = ImVec4(0.26f, 0.59f, 0.98f, 0.95f);
-	style.Colors[ImGuiCol_PlotLines] = ImVec4(0.39f, 0.39f, 0.39f, 1.00f);
-	style.Colors[ImGuiCol_PlotLinesHovered] = ImVec4(1.00f, 0.43f, 0.35f, 1.00f);
-	style.Colors[ImGuiCol_PlotHistogram] = ImVec4(0.90f, 0.70f, 0.00f, 1.00f);
-	style.Colors[ImGuiCol_PlotHistogramHovered] = ImVec4(1.00f, 0.60f, 0.00f, 1.00f);
-	style.Colors[ImGuiCol_TextSelectedBg] = ImVec4(0.26f, 0.59f, 0.98f, 0.35f);
-	//ImGuiCol_::hove
-
-	for (int i = 0; i <= ImGuiCol_COUNT; i++)
-	{
-		ImVec4& col = style.Colors[i];
-		if (col.w < 1.00f)
-		{
-			col.x *= alpha;
-			col.y *= alpha;
-			col.z *= alpha;
-			col.w *= alpha;
-		}
-	}
 }

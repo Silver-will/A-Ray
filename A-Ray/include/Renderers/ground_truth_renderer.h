@@ -8,15 +8,15 @@ struct GroundTruthRenderer : public BaseRenderer
 {
 	void Init(VulkanEngine* engine) override;
 
-	void Cleanup() = 0;
+	void Cleanup() override;
 
-	void Draw() = 0;
-	void DrawUI() = 0;
+	void Draw() override;
+	void DrawUI() override;
 
-	void Run() = 0;
-	void UpdateScene() = 0;
-	void LoadAssets() = 0;
-	void InitImgui() = 0;
+	void Run() override;
+	void UpdateScene() override;
+	void LoadAssets() override;
+	void InitImgui() override;
 
 	void Trace(VkCommandBuffer cmd);
 	void DrawBackground(VkCommandBuffer cmd);

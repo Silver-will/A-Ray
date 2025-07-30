@@ -6,6 +6,4 @@
 
 class VulkanEngine;
 
-void RenderUI(VulkanEngine* engine);
-
 void SetImguiTheme(float alpha);

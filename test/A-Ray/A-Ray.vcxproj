@@ -323,12 +323,14 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <ClCompile Include="D:\Repos\A-Ray\A-Ray\A-Ray.cpp" />
     <ClInclude Include="D:\Repos\A-Ray\A-Ray\include\Lights.h" />
-    <ClCompile Include="D:\Repos\A-Ray\A-Ray\include\Renderers\VoxelConeTracingRenderer.cpp" />
-    <ClInclude Include="D:\Repos\A-Ray\A-Ray\include\Renderers\VoxelConeTracingRenderer.h" />
     <ClCompile Include="D:\Repos\A-Ray\A-Ray\include\Renderers\base_renderer.cpp" />
     <ClInclude Include="D:\Repos\A-Ray\A-Ray\include\Renderers\base_renderer.h" />
     <ClCompile Include="D:\Repos\A-Ray\A-Ray\include\Renderers\clustered_forward_renderer.cpp" />
     <ClInclude Include="D:\Repos\A-Ray\A-Ray\include\Renderers\clustered_forward_renderer.h" />
+    <ClCompile Include="D:\Repos\A-Ray\A-Ray\include\Renderers\ground_truth_renderer.cpp" />
+    <ClInclude Include="D:\Repos\A-Ray\A-Ray\include\Renderers\ground_truth_renderer.h" />
+    <ClCompile Include="D:\Repos\A-Ray\A-Ray\include\Renderers\voxel_cone_tracing_renderer.cpp" />
+    <ClInclude Include="D:\Repos\A-Ray\A-Ray\include\Renderers\voxel_cone_tracing_renderer.h" />
     <ClInclude Include="D:\Repos\A-Ray\A-Ray\include\Shadows.h" />
     <ClInclude Include="D:\Repos\A-Ray\A-Ray\include\UI.h" />
     <ClInclude Include="D:\Repos\A-Ray\A-Ray\include\camera.h" />

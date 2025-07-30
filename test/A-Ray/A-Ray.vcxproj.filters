@@ -4,13 +4,16 @@
     <ClCompile Include="D:\Repos\A-Ray\A-Ray\A-Ray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Repos\A-Ray\A-Ray\include\Renderers\VoxelConeTracingRenderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="D:\Repos\A-Ray\A-Ray\include\Renderers\base_renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="D:\Repos\A-Ray\A-Ray\include\Renderers\clustered_forward_renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Repos\A-Ray\A-Ray\include\Renderers\ground_truth_renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Repos\A-Ray\A-Ray\include\Renderers\voxel_cone_tracing_renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="D:\Repos\A-Ray\A-Ray\src\Lights.cpp">
@@ -90,13 +93,16 @@
     <ClInclude Include="D:\Repos\A-Ray\A-Ray\include\Lights.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Repos\A-Ray\A-Ray\include\Renderers\VoxelConeTracingRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="D:\Repos\A-Ray\A-Ray\include\Renderers\base_renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="D:\Repos\A-Ray\A-Ray\include\Renderers\clustered_forward_renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Repos\A-Ray\A-Ray\include\Renderers\ground_truth_renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Repos\A-Ray\A-Ray\include\Renderers\voxel_cone_tracing_renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="D:\Repos\A-Ray\A-Ray\include\Shadows.h">

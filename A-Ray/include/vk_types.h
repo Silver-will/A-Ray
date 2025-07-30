@@ -159,6 +159,10 @@ struct LightGrid {
     uint32_t count;
 };
 
+struct TraceParams {
+    glm::vec4 test;
+};
+
 struct CullData {
     glm::mat4 view;
 };
