@@ -19,6 +19,9 @@ struct GroundTruthRenderer : public BaseRenderer
 	void InitImgui() = 0;
 
 	void Trace(VkCommandBuffer cmd);
+	void DrawBackground(VkCommandBuffer cmd);
+	void DrawPostProcess(VkCommandBuffer cmd);
+	void DrawImgui(VkCommandBuffer cmd, VkImageView targetImageView);
 	void BuildBVHStructure();
 
 	void ConfigureRenderWindow();
@@ -42,7 +45,12 @@ struct GroundTruthRenderer : public BaseRenderer
 	static void FramebufferResizeCallback(GLFWwindow* window, int width, int height);
 
 private:
+	DrawContext drawCommands;
+	DrawContext skyDrawCommands;
 
+	VkDescriptorSetLayout trace_descriptor_layout;
+	VkDescriptorSetLayout post_process_descriptor_layout;
+	VkDescriptorSetLayout skybox_descriptor_layout;
 
 	Camera main_camera;
 	std::shared_ptr<ResourceManager> resource_manager;
@@ -56,7 +64,6 @@ private:
 
 	MaterialInstance defaultData;
 	GLTFMetallic_Roughness metalRoughMaterial;
-	EarlyDepthPipelineObject depthPrePassPSO;
 
 	DescriptorAllocator globalDescriptorAllocator;
 	VkDescriptorSet _drawImageDescriptors;
@@ -100,26 +107,26 @@ private:
 	VkPipeline gradient_pipeline;
 	VkPipelineLayout gradient_pipeline_layout;
 
-	PipelineStateObject downsample_bloom_pso;
-	PipelineStateObject upsample_bloom_pso;
+	PipelineStateObject trace_rays_pso;
 
 	GPUSceneData scene_data;
 
-	AllocatedImage _whiteImage;
-	AllocatedImage _blackImage;
-	AllocatedImage _greyImage;
-	AllocatedImage storageImage;
+	AllocatedImage white_image;
+	AllocatedImage black_image;
+	AllocatedImage grey_image;
+	AllocatedImage storage_image;
 	AllocatedImage errorCheckerboardImage;
 
 	AllocatedImage _skyImage;
 	ktxVulkanTexture _skyBoxImage;
 
+	std::unordered_map<std::string, std::shared_ptr<LoadedGLTF>> loadedScenes;
 	VkSampler defaultSamplerLinear;
 	VkSampler defaultSamplerNearest;
 	VkSampler cubeMapSampler;
 
 	EngineStats stats;
-	std::vector<VkBufferMemoryBarrier> cullBarriers;
+	std::vector<VkBufferMemoryBarrier> compute_barriers;
 
 	//lights
 	DirectionalLight directLight;

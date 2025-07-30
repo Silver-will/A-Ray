@@ -20,7 +20,6 @@ struct ClusteredForwardRenderer : BaseRenderer
 	void PreProcessPass();
 	// IBL preparation passes
 	void GenerateIrradianceCube();
-	void GenerateBRDFLUT();
 	void GeneratePrefilteredCubemap();
 	// Light clustering building
 	void BuildClusters();
