@@ -9,6 +9,7 @@ if (POLICY CMP0141)
   set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
 endif()
 
+
 project ("A-Ray")
 
 set(CMAKE_CXX_STANDARD 23)
@@ -37,11 +38,12 @@ add_subdirectory ("third_party/stb")
 add_subdirectory ("third_party/vma")
 add_subdirectory ("third_party/tracy")
 add_subdirectory ("third_party/vk-bootstrap")
+#add_subdirectory ("third_party/fmt")
+#add_library(fmt::fmt ALIAS fmt)
+#find_package(fmt REQUIRED)
 
 option(MATCH_SUPPORT_KTX "Support KTX" ON)
-
 if (MATCH_SUPPORT_KTX)
-
  option(KTX_FEATURE_TOOLS "Create KTX tools" OFF )
  option(KTX_FEATURE_DOC "Create KTX documentation." OFF )
  option(KTX_FEATURE_JNI "Create Java bindings for libktx." OFF )
@@ -58,14 +60,15 @@ if (MATCH_SUPPORT_KTX)
             set(BASH_EXECUTABLE "bash.exe")
         endif()
     endif()
-add_subdirectory ("third_party/ktx")
+
+add_subdirectory ("third_party")
 
 endif()
 # Include directories
 target_include_directories(${PROJECT_NAME} PRIVATE
+    A-Ray/
     A-Ray/include/
     A-Ray/src/
-    A-Ray/
     third_party/vma/include
     third_party/vma
     third_party/vma/src
@@ -79,11 +82,14 @@ target_include_directories(${PROJECT_NAME} PRIVATE
     third_party/ktx/lib
     third_party/ktx/external
     third_party/tracy/public/tracy
+    third_party/fmt/include
+    third_party/fmt/src
     ${Vulkan_INCLUDE_DIRS}
 )
 
 set(VULKAN_LIBRARY "$ENV{VK_SDK_PATH}/Lib/vulkan-1.lib")
-
+target_compile_definitions(${PROJECT_NAME} PRIVATE
+                            ENGINE_ASSET_PATH="${CMAKE_CURRENT_LIST_DIR}/assets")
 
 target_link_libraries(${PROJECT_NAME}
     stb
@@ -96,6 +102,5 @@ target_link_libraries(${PROJECT_NAME}
     ktx
 )
 
-add_custom_target(assets COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_LIST_DIR}/assets.cmake)
-
-add_dependencies(${PROJECT_NAME} assets)
+#add_custom_target(assets COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_LIST_DIR}/assets.cmake)
+#add_dependencies(${PROJECT_NAME} assets)

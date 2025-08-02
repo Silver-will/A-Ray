@@ -7,7 +7,7 @@ find_package(Vulkan REQUIRED)
 
 # libktx
 set(KTX_DIR ${CMAKE_CURRENT_SOURCE_DIR}/ktx)
-set(SHELL_EXECUTABLE "D:\Git\git-bash.exe")
+set(SHELL_EXECUTABLE "D:\\Git\\git-bash.exe")
 
 set(KTX_SOURCES
     ${Vulkan_INCLUDE_DIRS}
@@ -82,40 +82,20 @@ set(KTX_INCLUDE_DIRS
     ${Vulkan_INCLUDE_DIRS}
 )
 
-option( KTX_FEATURE_KTX1 "Enable KTX 1 support." ON )
-option( KTX_FEATURE_KTX2 "Enable KTX 2 support." OFF )
-
 add_library(ktx STATIC ${KTX_SOURCES})
 
- if(KTX_FEATURE_KTX1)
-        target_compile_definitions(ktx PUBLIC KTX_FEATURE_KTX1)
-        target_sources(
-            ${target}
-        PRIVATE
-            lib/texture1.c
-            lib/texture1.h
-        )
-    endif()
-
-    if(KTX_FEATURE_KTX2)
-        target_compile_definitions(ktx PUBLIC KTX_FEATURE_KTX2)
-    endif()
-
 target_compile_definitions(ktx PUBLIC LIBKTX)
-
-target_compile_definitions(
-        ktx
-        PUBLIC
-            KTX_FEATURE_WRITE
-        PRIVATE
-            BASISD_SUPPORT_KTX2_ZSTD=1
-            BASISD_SUPPORT_KTX2=1
-)
+if (WIN32)
+target_compile_definitions(ktx PUBLIC "KTX_API=__declspec(dllexport)")
+endif()
+target_compile_definitions(ktx PUBLIC KTX_FEATURE_WRITE=0)
+target_compile_definitions(ktx PUBLIC BASISD_SUPPORT_KTX2_ZSTD=0)
+target_compile_definitions(ktx PUBLIC BASISU_NO_ITERATOR_DEBUG_LEVEL)
 
 target_include_directories(ktx SYSTEM PUBLIC ${KTX_INCLUDE_DIRS})
 
+set_target_properties(ktx PROPERTIES FOLDER "ThirdParty" POSITION_INDEPENDENT_CODE ON)
 set(VULKAN_LIBRARY "$ENV{VK_SDK_PATH}/Lib/vulkan-1.lib")
 
 target_link_libraries(ktx PUBLIC ${VULKAN_LIBRARY})
 
-set_target_properties(ktx PROPERTIES FOLDER "ThirdParty" POSITION_INDEPENDENT_CODE ON)

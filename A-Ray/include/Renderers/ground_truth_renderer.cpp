@@ -325,10 +325,10 @@ void GroundTruthRenderer::InitComputePipelines()
 	VK_CHECK(vkCreatePipelineLayout(engine->_device, &trace_rays_rays_layout_info, nullptr, &trace_rays_pso.layout));
 
 	VkShaderModule trace_shader;
-	if (!vkutil::load_shader_module("../../assets/shaders/gradient.spv", engine->_device, &trace_shader)) {
+	if (!vkutil::load_shader_module(std::string(assets_path + "/shaders/gradient.spv").c_str(), engine->_device, &trace_shader)) {
 		std::print("Error when building the compute shader \n");
 	}
-
+	
 	VkPipelineShaderStageCreateInfo stage_info{};
 	stage_info.sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
 	stage_info.pNext = nullptr;
@@ -352,7 +352,7 @@ void GroundTruthRenderer::InitComputePipelines()
 
 void GroundTruthRenderer::InitDefaultData()
 {
-
+	assets_path = GetAssetPath();
 	//Create default images
 	uint32_t white = glm::packUnorm4x8(glm::vec4(1, 1, 1, 1));
 	white_image = resource_manager->CreateImage((void*)&white, VkExtent3D{ 1, 1, 1 }, VK_FORMAT_R8G8B8A8_UNORM,
@@ -681,7 +681,7 @@ void GroundTruthRenderer::Trace(VkCommandBuffer cmd)
 
 	vkCmdBindPipeline(cmd, VK_PIPELINE_BIND_POINT_COMPUTE, trace_rays_pso.pipeline);
 	vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_COMPUTE, trace_rays_pso.layout, 0, 1, &trace_descriptor, 0, nullptr);
-	vkCmdDispatch(cmd, (uint32_t)_windowExtent.width / 16, (uint32_t)_windowExtent.height / 16, 1);
+	vkCmdDispatch(cmd, ((uint32_t)_windowExtent.width / 16) + 1, ((uint32_t)_windowExtent.height / 16) + 1, 1);
 }
 
 void GroundTruthRenderer::Draw()

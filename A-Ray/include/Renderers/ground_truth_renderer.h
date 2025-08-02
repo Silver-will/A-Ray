@@ -138,6 +138,8 @@ private:
 		std::vector<PointLight> pointLights;
 
 	}pointData;
+
+	std::string assets_path;
 };
 
 #endif
